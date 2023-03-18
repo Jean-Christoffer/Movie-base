@@ -10,7 +10,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { NavLink } from "react-router-dom";
+import { NavLink,Link } from "react-router-dom";
 
 const pages = ['Movies', 'TV Shows', 'Blog', 'Awards & Events'];
 
@@ -74,21 +74,18 @@ export default function Navbar() {
       <Container maxWidth="xl">
  
         <Toolbar disableGutters> 
-          <Box href='/'
+          <Box 
             component="a"
 
             sx={{
               mr: 2,
+              mt:1,
               display: { xs: 'none', md: 'flex' },
-    
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
               color: 'inherit',
               textDecoration: 'none',
             }}
           >
-            <img src='/imdb.png' width={'80px'} />
+            <Link to='/'><img src='/imdb.png' width={'80px'} /></Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
