@@ -39,8 +39,8 @@ export default function Details(){
         }
     },[data])
 
+
     console.log(trailer)
-    
 
     return(
         <>
@@ -49,10 +49,10 @@ export default function Details(){
             <Typography>{releaseDate} : {runTime} </Typography>
             <Paper sx={{ display:'flex', flexDirection:{xs:'column', md:'row'}, mt:2 }}>
                 <Box  sx={{ width:{xs:'100%', md:'320px'} }} >
-                    <img src={`http://image.tmdb.org/t/p/w500/${data.poster_path}`} className='bear-img' />
+                    <img src={`http://image.tmdb.org/t/p/w500/${data.poster_path}` ?? '/imdb.png'} className='bear-img' />
                 </Box>
                 <Box sx={{ width:'100%' }}>
-                    <iframe className="iframe" src={`https://www.youtube.com/embed/${trailer.key}`}
+                    <iframe className="iframe" src={`https://www.youtube.com/embed/${trailer}`}
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                      allowfullscreen></iframe>
                 </Box>
