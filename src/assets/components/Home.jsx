@@ -5,7 +5,7 @@ import Carousel from 'react-material-ui-carousel'
 import {Typography, Box, Container} from '@mui/material';
 import useFetch from "./useFetch.jsx";
 import UpcomingMovies from './Upcoming.jsx';
-import Grid2 from '@mui/material/Unstable_Grid2';
+
 
 export default function Movies(){
 
@@ -29,7 +29,7 @@ export default function Movies(){
         <>
             <Container sx={{display:'flex',mt:5, justifyContent:{xs:'center', md:'space-around'}, flexDirection:{xs:'column', md:'row'}, alignItems:{xs:'center',md:'flex-start'} }}>
 
-                <Box sx={{width:{xs:'100%', md:'400px'} }} >
+                <Box sx={{width:{xs:'100%', md:'700px'} }} >
                     <Typography variant={'h4'} component='h1' sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:{xs:0, md:2}}}>Trending</Typography>
                     <Carousel sx={{bgcolor:'rgb(0, 0, 0)', width:'100%' } } navButtonsAlwaysVisible={true}>
                         
@@ -38,7 +38,7 @@ export default function Movies(){
                 </Box>
                 <Box>
                 <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:2, mb: {md:1, xs:0}, mt:{xs:5, md:0}}}>Upcoming Movies</Typography>
-                <Box p={2} maxHeight={650}  sx={{ overflowY:'scroll'}}>
+                <Box p={1} maxHeight={550}  sx={{ overflowY:'scroll'}}>
                 
                 {upComing.map(movie => <UpcomingMovies key={movie.id} details= {movie} />)}
                 </Box>
