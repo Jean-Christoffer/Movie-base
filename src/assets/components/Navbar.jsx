@@ -75,9 +75,9 @@ export default function Navbar() {
  
         <Toolbar disableGutters> 
 
-        <Box component="a"
-            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} >
-            <img src='/imdb.png' width={'80px'} />
+        <Box 
+            sx={{mt:1, display: { xs: 'none', md: 'flex' }, mr: 1 }} >
+           <Link to='/'> <img src='/imdb.png' width={'80px'} /></Link>
           </Box>
 
 

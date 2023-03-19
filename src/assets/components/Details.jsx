@@ -1,18 +1,29 @@
 import { useParams } from "react-router-dom"
 import useFetch from "./useFetch.jsx";
 import {key} from './key.jsx'
-import {Typography, Box, Container, Paper,Button} from '@mui/material';
+import {Typography, Box, Container,Stack,Rating} from '@mui/material';
 import {useState,useEffect} from 'react'
 import Loader from './Loader.jsx'
-import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
-
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+import  { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/css/bundle';
-
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 export default function Details(){
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  
+    let slidesPerView = 3;
+  
+    if (isMobile) {
+      slidesPerView = 1;
+    } else if (isTablet) {
+      slidesPerView = 2;
+    }
+
     const params = useParams()
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
 
@@ -20,7 +31,7 @@ export default function Details(){
     const [trailer, setTrailer] = useState([])
     const [credits, setCredits] = useState({})
     const [images, setImages] = useState([])
-    console.log(trailer)
+
     const [releaseDate, setReleaseDate] = useState('')
     const [runTime, setRunTime] = useState()
     const[officialTrailer, setOfficialTrailer] = useState('')
@@ -92,7 +103,7 @@ export default function Details(){
     return(
         <>
         <Container sx={{ mt:2 }}>
-            <Typography sx={{ color:'white' }} variant="h3" component={'h1'}>{data.name ?? data.original_title}</Typography>
+            <Typography sx={{ color:'white' }} variant="h4" component={'h1'}>{data.name ?? data.original_title}</Typography>
             <Typography  sx={{ color:'#dba506' }}>{releaseDate} : {runTime} </Typography>
             <Box sx={{ display:'flex', flexDirection:{xs:'column', md:'row'}, mt:2 }}>
                 <Box  sx={{ width:{xs:'100%', md:'320px'},position:'relative' }} >
@@ -153,10 +164,8 @@ export default function Details(){
                 pagination={{ clickable: true }}
                 scrollbar={{ draggable: true }}
                 spaceBetween={50}
-                slidesPerView={3}
+                slidesPerView={slidesPerView}
 
-                onSlideChange={() => console.log('slide change')}
-                onSwiper={(swiper) => console.log(swiper)}
                 >
                 {images.map((image,index) => <SwiperSlide key={index} ><img className="swiper-img" src={`http://image.tmdb.org/t/p/w500/${image.file_path}`}/></SwiperSlide>)}
 
