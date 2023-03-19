@@ -74,19 +74,12 @@ export default function Navbar() {
       <Container maxWidth="xl">
  
         <Toolbar disableGutters> 
-          <Box 
-            component="a"
 
-            sx={{
-              mr: 2,
-              mt:1,
-              display: { xs: 'none', md: 'flex' },
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            <Link to='/'><img src='/imdb.png' width={'80px'} /></Link>
+        <Box component="a"
+            sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} >
+            <img src='/imdb.png' width={'80px'} />
           </Box>
+
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton

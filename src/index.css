@@ -18,17 +18,43 @@ button{
     width: 100%;
     
 }
+.to{
+  width: 100%;
+}
 .bear-img{
     height: 100%;
     border-radius: 5px 0 0 5px;
 
+}
+.swiper-img{
+  width: 100%;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+.swiper-button-prev,
+.swiper-button-next {
+
+
+  color: #dba506;
+
+}
+.swiper-pagination-bullet{
+  background: #dba506;
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+  color: #f1f1f1;
+  cursor: pointer;
 }
 
 .absolute-img{
     border-radius: 5px;
 }
 .details-cta{
-    margin: 10px;
+    margin: 10px 0 40px 0;
     background: #dba506;
     padding: 5px 20px;
     color: black;

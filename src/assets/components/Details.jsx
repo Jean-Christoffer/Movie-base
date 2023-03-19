@@ -7,6 +7,11 @@ import Loader from './Loader.jsx'
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+
+import 'swiper/css/bundle';
+
 export default function Details(){
     const params = useParams()
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
@@ -14,7 +19,8 @@ export default function Details(){
     const [data, setData] = useState({})
     const [trailer, setTrailer] = useState([])
     const [credits, setCredits] = useState({})
-
+    const [images, setImages] = useState([])
+    console.log(trailer)
     const [releaseDate, setReleaseDate] = useState('')
     const [runTime, setRunTime] = useState()
     const[officialTrailer, setOfficialTrailer] = useState('')
@@ -28,18 +34,18 @@ export default function Details(){
     useEffect(() => {
         Promise.all([
             get(`movie/${params.id}?api_key=${key}&language=en-US`),
-            get(`movie/${params.id}}/videos?api_key=${key}&language=en-US`),
-            get(`movie/${params.id}/credits?api_key=${key}&language=en-US`)
+            get(`movie/${params.id}/videos?api_key=${key}&language=en-US`),
+            get(`movie/${params.id}/credits?api_key=${key}&language=en-US`),
+            get(`movie/${params.id}/images?api_key=${key}`)
         ])
-        .then(([movieData, trailerData,creditsData]) => {
+        .then(([movieData, trailerData, creditsData, imageData]) => {
             setData(movieData);
             setTrailer(trailerData.results);
             setCredits(creditsData)
+            setImages(imageData.backdrops)
         })
         .catch(error => console.log(error))
     }, [params.id])
-
-    console.log(crew)
 
     useEffect(()=>{
         if(data.release_date){
@@ -57,18 +63,20 @@ export default function Details(){
     },[data])
 
     useEffect(()=>{
-        let foundWriters
-        let foundDirector
-        if(credits){
-            foundWriters = credits.crew.find(member => member.job === 'Writer')
-            foundDirector = credits.crew.find(member => member.job === 'Director')
+        let writers
+        let director
+        if(credits.crew){
+            writers = credits.crew.filter(person => person.job === 'Writer')
+            director = credits.crew.filter(person => person.job === 'Director')
+           
         }
-        if(foundDirector){
-            setDirector(foundDirector)
+        if(writers){
+            setWrites(writers)
         }
-        if(foundWriters){
-            setWrites(foundWriters)
+        if(director){
+            setDirector(director)
         }
+
     },[credits])
 
    useEffect(()=>{
@@ -83,7 +91,7 @@ export default function Details(){
 
     return(
         <>
-        <Container>
+        <Container sx={{ mt:2 }}>
             <Typography sx={{ color:'white' }} variant="h3" component={'h1'}>{data.name ?? data.original_title}</Typography>
             <Typography  sx={{ color:'#dba506' }}>{releaseDate} : {runTime} </Typography>
             <Box sx={{ display:'flex', flexDirection:{xs:'column', md:'row'}, mt:2 }}>
@@ -98,18 +106,64 @@ export default function Details(){
                     allowFullScreen></iframe>
                 </Box>
             </Box>
+
             <Container sx={{ mt:2, bgcolor:'#191919', p:1,borderRadius:'5px' }}>
                <Box sx={{display:'flex', gap:'20px', mb:1 }}>
                     {genres.map((genre,index) => <Typography key={index} sx={{ color:'#dba506' }}>{genre.name}</Typography>)}
                 </Box>
-                <Stack sx={{ mb:1 }} spacing={1}>
-                    <Rating name="half-rating-read" size="medium" value={data.vote_average / 2} precision={0.5} readOnly
+                { data.vote_average ?  <Stack sx={{ mb:1 }} spacing={1}>
+                   <Rating name="half-rating-read" size="medium" value={data.vote_average / 2} precision={0.5} readOnly
                     
-                    />
-                </Stack>
-                <Typography>{data.overview}</Typography>
-                {crew.map((member,index) => <Typography key={index}>{member.job}</Typography>)}  
+                    /> 
+                </Stack> :  <Typography sx={{ mb:1,fontWeight:'bold' }} >No rating yet</Typography>}
+
+                <Typography sx={{ mb:0.1,fontWeight:'bold' }}>Overview:</Typography>
+                <Typography >{data.overview}</Typography>
+
+                <Box sx={{ display:'flex',fontWeight:'bold',mt:1 }}>
+                    Writers:{`\u00A0`}
+                    {writers.slice(0, -1).map((writer, index) => (
+                        <Typography key={index}>{writer.name}{`\u00A0`} - {`\u00A0`}</Typography>
+                    ))}
+                    {writers.length > 0 && (
+                        <Typography>{writers[writers.length - 1].name}</Typography>
+                    )}
+                    </Box>
+
+                    <Box sx={{ display:'flex',fontWeight:'bold',mt:1 }}>
+                    Directors:{`\u00A0`}
+                    {director.slice(0, -1).map((director, index) => (
+                        <Typography key={index}>{director.name}{`\u00A0`} - {`\u00A0`}</Typography>
+                    ))}
+                    {director.length > 0 && (
+                        <Typography>{director[director.length - 1].name}</Typography>
+                    )}
+                    </Box>
+
             </Container>
+            {images.length > 0 &&
+            <Container sx={{mb:2, mt:2, bgcolor:'#191919', p:1,borderRadius:'5px', width:'100%' }} >
+            <Box>
+                <Typography variant="h4" sx={{ mb:1 }} component={'h2'}>Photos</Typography>
+            </Box>
+       
+            <Swiper
+                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                navigation
+                pagination={{ clickable: true }}
+                scrollbar={{ draggable: true }}
+                spaceBetween={50}
+                slidesPerView={3}
+
+                onSlideChange={() => console.log('slide change')}
+                onSwiper={(swiper) => console.log(swiper)}
+                >
+                {images.map((image,index) => <SwiperSlide key={index} ><img className="swiper-img" src={`http://image.tmdb.org/t/p/w500/${image.file_path}`}/></SwiperSlide>)}
+
+            </Swiper>
+
+        </Container> }
+            
         </Container>
         </>
     )
