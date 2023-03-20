@@ -17,7 +17,7 @@ export default function Upcoming({details}){
                     <Rating name="half-rating-read"  size="small" value={details.vote_average / 2} precision={0.5} readOnly />
                 </Stack>
                 <Box>
-                    <Link className='details-cta cta-up' to={`details/${details.id}`}>Details</Link>
+                    <Link className='details-cta' to={`details/${details.id}`}>Details</Link>
                 </Box>
             </Box>
             </Paper>

@@ -56,14 +56,21 @@ button{
 .details-cta{
     margin: 10px 0 40px 0;
     background: #dba506;
-    padding: 5px 20px;
+    padding: 5px 10px;
     color: black;
     border-radius: 5px;
     font-weight: 700;
 }
 .cta-up{
-  margin: 0;
-  padding: 8px 10px;
+  display: block;
+  background-color: rgb(19, 18, 18);
+  color: #dba506;
+  margin: 10px;
+  border-radius:3px;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+
 }
 .iframe{
     border-radius: 0 5px 5px 0;
@@ -72,7 +79,14 @@ button{
     border: none;
 
 }
-
+.latest-img{
+  width: 100%;
+  height: 320px;
+}
+.toprated{
+ width: 100%;
+ display: block;
+}
 
 
 /* Loader */

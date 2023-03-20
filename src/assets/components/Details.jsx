@@ -7,10 +7,10 @@ import Loader from './Loader.jsx'
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import  { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore,{ Navigation, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/css/bundle';
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Scrollbar, A11y]);
 export default function Details(){
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -112,9 +112,9 @@ export default function Details(){
                 </Box>
                 <Box sx={{ width:'100%', height:{xs:'350px', md:'auto'}, position:'relative' }}>
                     {loading && <Loader/>}
-                    <iframe className="iframe" src={`https://www.youtube.com/embed/${officialTrailer}`}
+                    {officialTrailer ? <iframe className="iframe" src={`https://www.youtube.com/embed/${officialTrailer}`}
                     allow="accelerometer; clipboard-write; encrypted-media;  picture-in-picture"
-                    allowFullScreen></iframe>
+                    allowFullScreen></iframe> : <Typography sx={{ textAlign:'center', mt:20 }}>No trailer found</Typography>}
                 </Box>
             </Box>
 
@@ -157,11 +157,11 @@ export default function Details(){
             <Box>
                 <Typography variant="h4" sx={{ mb:1 }} component={'h2'}>Photos</Typography>
             </Box>
-       
+            {loading && <Loader/>}
             <Swiper
-                modules={[Navigation, Pagination, Scrollbar, A11y]}
+                modules={[Navigation, Scrollbar, A11y]}
                 navigation
-                pagination={{ clickable: true }}
+   
                 scrollbar={{ draggable: true }}
                 spaceBetween={50}
                 slidesPerView={slidesPerView}

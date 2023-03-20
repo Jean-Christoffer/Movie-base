@@ -6,19 +6,35 @@ import useFetch from "./useFetch.jsx";
 import UpcomingMovies from './Upcoming.jsx';
 import Loader from './Loader.jsx'
 import Latest from './Latest.jsx'
-
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore,{ Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-
+import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css/bundle';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from '@mui/material/styles';
+// Add this CSS to the top of your Movies component
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y]);
 export default function Movies(){
+    const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const isTablet = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  
+    let slidesPerView = 4;
+    let space = 50
+  
+    if (isMobile) {
+      slidesPerView = 1.5;
+      space = 30
+    } else if (isTablet) {
+      slidesPerView = 2.5;
+      
+    }
 
     const [data,setData] = useState([])
     const [upComing, setUpComing] = useState([])
     const [popular, setPopular] = useState([])
-    const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
+    
 
     useEffect(()=>{
         Promise.all([
@@ -42,8 +58,12 @@ export default function Movies(){
                     <Typography variant={'h4'} component='h1' sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:{xs:0, md:0}}}>Trending</Typography>
                     {loading ? <Loader/> :
                     <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
+                    modules={[Navigation,Autoplay, Pagination, Scrollbar, A11y]}
                     navigation
+                    autoplay={{
+                        "delay": 4500,
+                        "disableOnInteraction": false
+                      }}
                     pagination={{ clickable: true }}
                     scrollbar={{ draggable: true }}
                     spaceBetween={50}
@@ -62,15 +82,15 @@ export default function Movies(){
                 </Box>
             </Container>
 
-            <Container >
-     
-                <Typography  variant='h4' component='h2' sx={{ ml:1,color:'#dba506',mb: {md:1, xs:0} }}>Popular</Typography>
+            <Container sx={{ mb:2, mt:3 }} >
+                {loading && <Loader/>}
+                <Typography  variant='h4' component='h2' sx={{ ml:0.5,color:'#dba506',mb: {md:1, xs:0} }}>Popular</Typography>
                     <Swiper
-                    modules={[Navigation, Pagination, Scrollbar, A11y]}
-                    navigation
 
-                    spaceBetween={50}
-                    slidesPerView={4}
+                    modules={[Navigation, Scrollbar, A11y]}
+                    navigation
+                    spaceBetween={space}
+                    slidesPerView={slidesPerView}
                                            >
                       {popular.map((movie) => <SwiperSlide key={movie.id} ><Latest key={movie.id} details={movie} /></SwiperSlide>)}
                    
