@@ -1,12 +1,12 @@
-import {Typography, Box,Paper} from '@mui/material';
+import {Typography, Box,Paper,Button} from '@mui/material';
 import {Link} from 'react-router-dom'
 export default function GenreCard(props){
-    const {details} = props
+    const {details,handleClick} = props
     return(
         <>
-            <Paper sx={{width:'200px', display:'flex', justifyContent:'center',alignItems:'center' }}>
+            <Button onClick={handleClick} value={details.id}><Paper sx={{width:'200px', display:'flex', justifyContent:'center',alignItems:'center', p:2 }}>
                 <Typography>{details.name}</Typography>
-            </Paper>
+            </Paper></Button>
         </>
     )
 }
