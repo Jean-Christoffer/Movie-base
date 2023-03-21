@@ -31,7 +31,7 @@ export default function Details(){
     const [trailer, setTrailer] = useState([])
     const [credits, setCredits] = useState({})
     const [images, setImages] = useState([])
-
+    console.log(credits)
     const [releaseDate, setReleaseDate] = useState('')
     const [runTime, setRunTime] = useState()
     const[officialTrailer, setOfficialTrailer] = useState('')

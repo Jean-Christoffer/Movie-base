@@ -60,6 +60,7 @@ export default function Movies(){
                     <Swiper
                     modules={[Navigation,Autoplay, Pagination, Scrollbar, A11y]}
                     navigation
+                    
                     autoplay={{
                         "delay": 4500,
                         "disableOnInteraction": false
@@ -85,8 +86,7 @@ export default function Movies(){
             <Container sx={{ mb:2, mt:3 }} >
                 {loading && <Loader/>}
                 <Typography  variant='h4' component='h2' sx={{ ml:0.5,color:'#dba506',mb: {md:1, xs:0} }}>Popular</Typography>
-                    <Swiper
-
+                    <Swiper  
                     modules={[Navigation, Scrollbar, A11y]}
                     navigation
                     spaceBetween={space}
