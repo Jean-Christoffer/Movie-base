@@ -1,9 +1,9 @@
 import {Container} from '@mui/material'
 import {Route, Routes,BrowserRouter} from 'react-router-dom'
-import Navbar from './assets/components/Navbar'
-import Home from './assets/components/Home'
-import Details from './assets/components/Details.jsx'
-import Movies from './assets/components/Movies.jsx'
+import Navbar from './components/Navbar'
+import Home from './components/Home'
+import Details from './components/Details.jsx'
+import Movies from './components/Movies.jsx'
 function App() {
 
 return(
