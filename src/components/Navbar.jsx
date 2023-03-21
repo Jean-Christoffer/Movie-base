@@ -12,7 +12,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { NavLink,Link } from "react-router-dom";
 
-const pages = ['Movies'];
+const pages = ['Movies','Genre'];
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',

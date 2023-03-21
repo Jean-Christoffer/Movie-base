@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Details from './components/Details.jsx'
 import Movies from './components/Movies.jsx'
+import MoviesByGenre from './components/MoviesByGenre'
 function App() {
 
 return(
@@ -17,6 +18,7 @@ return(
         <Route path='/' element={<Home/>}></Route>
         <Route path='/details/:id' element={<Details/>}></Route>
         <Route path='/movies/' element={<Movies/>}></Route>
+        <Route path='/genre/' element={<MoviesByGenre/>}></Route>
       </Routes>
       </Container>
     </BrowserRouter>
