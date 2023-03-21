@@ -62,7 +62,7 @@ export default function Movies(){
     return(
         <>
         <Container>
-            {loading && <Loader/>}
+            
             <Paper sx={{ mt:1, mb:1 }}>
                 <Typography variant="h6" component='h1' sx={{ p:1 }}>
                 TMDB Top Movies
@@ -92,6 +92,7 @@ export default function Movies(){
                 <Button onClick={handleAscending}><ArrowDownwardIcon /> <ArrowUpwardIcon/></Button>
                 </Box>
             </Paper>
+        {loading && <Loader/>}
         {sortedData.map((movie,index) => <TopRated key={movie.id} details={movie} rank={index + 1} />)}
         </Container>
         </>
