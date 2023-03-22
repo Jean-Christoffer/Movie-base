@@ -12,7 +12,15 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 import { NavLink,Link } from "react-router-dom";
 
-const pages = ['Movies','Genre'];
+
+const pages = [{
+  name:'Top 100 movies',
+  route:'movies'
+,}
+,{
+  name:'Movies by genre',
+  route:'genre'
+}]
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -112,7 +120,7 @@ export default function Navbar() {
             >
               {pages.map((page, index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                  <NavLink  to={`/${page.toLowerCase()}`} >{page}</NavLink>
+                  <NavLink key={index}  to={`/${page.route}`} >{page.name}</NavLink>
                 </MenuItem>
               ))}
             </Menu>
@@ -137,7 +145,7 @@ export default function Navbar() {
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>
             {pages.map((page,index) => (
                 <MenuItem key={index} onClick={handleCloseNavMenu}>
-                <NavLink  to={`/${page.toLowerCase()}`} >{page}</NavLink>
+                <NavLink key={index}  to={`/${page.route}`} >{page.name}</NavLink>
               </MenuItem>
             ))}
           </Box>
