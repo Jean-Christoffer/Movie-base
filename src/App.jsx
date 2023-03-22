@@ -4,7 +4,8 @@ import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Details from './components/Details.jsx'
 import Movies from './components/Movies.jsx'
-import MoviesByGenre from './components/MoviesByGenre'
+import MoviesByGenre from './components/MoviesByGenre.jsx'
+import SearchResults from './components/SearchResults.jsx'
 function App() {
 
 return(
@@ -19,6 +20,7 @@ return(
         <Route path='/details/:id' element={<Details/>}></Route>
         <Route path='/movies/' element={<Movies/>}></Route>
         <Route path='/genre/' element={<MoviesByGenre/>}></Route>
+        <Route path='/searchresults/' element={<SearchResults/>}></Route>
       </Routes>
       </Container>
     </BrowserRouter>

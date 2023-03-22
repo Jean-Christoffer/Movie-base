@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +10,8 @@ import MenuItem from '@mui/material/MenuItem';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import { NavLink,Link } from "react-router-dom";
+import { NavLink,Link,useNavigate  } from "react-router-dom";
+
 
 
 const pages = [{
@@ -21,6 +22,9 @@ const pages = [{
   name:'Movies by genre',
   route:'genre'
 }]
+
+
+
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -37,15 +41,6 @@ const Search = styled('div')(({ theme }) => ({
   },
 }));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: '100%',
-  position: 'absolute',
-  pointerEvents: 'none',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-}));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
@@ -64,6 +59,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
+
 export default function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -76,6 +73,28 @@ export default function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+const [query, setQuery] = useState(null)
+const [searchInput,setSearchInput] = useState('')
+
+let navigate  = useNavigate();
+function handleQuery(event){
+  event.preventDefault()
+
+  let cleaner
+  if(searchInput !== ''){
+    cleaner = searchInput
+    cleaner = cleaner.toLocaleLowerCase().trim().replaceAll(' ', '%')
+  } 
+  setQuery(cleaner)
+}
+useEffect(() => {
+  if (query !== null) {
+    navigate('/searchresults', { state: { query } });
+    setQuery(null)
+    setSearchInput('')
+  }
+}, [query])
 
   return (
     <AppBar position="static" sx={{ bgcolor:'#191919', display:'flex', justifyContent:'space-between' }}>
@@ -124,22 +143,25 @@ export default function Navbar() {
                 </MenuItem>
               ))}
             </Menu>
-          </Box>
-
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
+          </Box>  
+         
+          <form onSubmit={handleQuery}>
+            <Search sx={{ position:'relative' }} value={searchInput} onInput={(event) => setSearchInput(event.target.value)}>
             <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+                value={searchInput}
+              />
+            <IconButton sx={{ color:'white' }} size='small' type="submit" aria-label="search">
+                <SearchIcon  />
+              </IconButton>
 
-
-          <Box component="a"
-            href="/" sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} >
-            <img src='/imdb.png' width={'80px'} />
+            </Search>
+          </form>
+  
+          <Box 
+            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, mt:1 }} >
+            <Link to='/'> <img src='/imdb.png' width={'80px'} /></Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>

@@ -63,7 +63,7 @@ export default function Movies(){
         <>
         <Container>
             
-            <Paper sx={{ mt:1, mb:1 }}>
+            <Paper sx={{ mt:2, mb:2 }}>
                 <Typography variant="h6" component='h1' sx={{ p:1 }}>
                 TMDB Top Movies
                 </Typography>

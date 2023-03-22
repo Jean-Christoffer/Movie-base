@@ -11,7 +11,9 @@ export default function GenreMoviesCards(props){
                 </Box>
                 <Box sx={{ width:'100%', p:1 }}>
                     <Box sx={{ display:'flex' }}>
-                        <Link className='top-rated-title genreLink' to={`/details/${details.id}`}>{details.original_title ?? details.name}</Link>
+                        <Typography>
+                            <Link className='top-rated-title genreLink' to={`/details/${details.id}`}>{details.original_title ?? details.name}</Link>
+                        </Typography>
                         <Typography  variant='subtitle'>{`\u00A0`}({details.release_date.substring(0,4)})</Typography>                    
                     </Box>
 

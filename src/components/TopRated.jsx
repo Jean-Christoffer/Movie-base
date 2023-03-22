@@ -6,21 +6,32 @@ export default function TopRated(props){
     const {details, rank} = props
     return(
         <>
-            <Paper sx={{ display:'flex', alignItems:'center',mb:0.5,p:0 }}>
+            <Paper  sx={{ bgcolor:'#f5f5f5',color:'black', display:'flex', width:'100%',p:1, alignItems:'center', mb:1}}>
                 <Box sx={{ width:'90px' }}>
                     <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='toprated'/>
                 </Box>
                 <Typography sx={{ ml:1 }}>{rank}.{`\u00A0`}</Typography>
-                <Box sx={{ display:'flex',gap:'5px', alignItems:'center'}}>
-                    <Link className='top-rated-title' to={`/details/${details.id}`}>{details.original_title ?? details.name}</Link>
-                    <Typography variant='subtitle'>({details.release_date.substring(0,4)})</Typography>
 
+                <Box sx={{ width:'100%', p:1,display:'flex',justifyContent:'flex-start' }}>
+                    <Box sx={{ display:'flex',alignItems:'center' }}>
+                        <Typography  sx={{display:'inline-block', width:{xs:'100px',sm:'100%',md:'100%'}, whiteSpace:'nowrap',overflow:'hidden',textOverflow:'ellipsis'  }}>
+                            <Link className='top-rated-title genreLink'
+                                to={`/details/${details.id}`}>{details.original_title ?? details.name}</Link>
+                        </Typography>
+
+                        <Typography  variant='subtitle'>{`\u00A0`}({details.release_date.substring(0,4)})</Typography>                    
+                    </Box>
+
+
+                    <Box sx={{ display:'flex',alignItems:'center',gap:'5px' }}>
+                        <StarIcon sx={{ color:'#dba506' }}  />
+                        <Typography sx={{ fontWeight:'bold' }}>{details.vote_average}</Typography>
+                    </Box>
                 </Box>
-                <Box  sx={{ display:'flex' }}>
-                    <StarIcon sx={{ color:'#dba506' }} />
-                    <Typography sx={{ fontWeight:'bold' }}>{details.vote_average}</Typography>
-                </Box>
+
             </Paper>
         </>
     )
 }
+
+
