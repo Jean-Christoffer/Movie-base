@@ -76,15 +76,15 @@ export default function Navbar() {
 
 const [query, setQuery] = useState(null)
 const [searchInput,setSearchInput] = useState('')
-
 let navigate  = useNavigate();
+
 function handleQuery(event){
   event.preventDefault()
 
   let cleaner
   if(searchInput !== ''){
     cleaner = searchInput
-    cleaner = cleaner.toLocaleLowerCase().trim().replaceAll(' ', '%')
+    cleaner = encodeURIComponent(cleaner.trim().toLowerCase());
   } 
   setQuery(cleaner)
 }
