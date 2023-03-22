@@ -18,8 +18,14 @@ button{
     width: 100%;
     
 }
-.to{
+.to,.genreimg{
   width: 100%;
+}
+.genreimg{
+  display: block;
+}
+.genreLink{
+  font-weight: bold;
 }
 .bear-img{
     height: 100%;
