@@ -6,6 +6,7 @@ import Details from './components/Details.jsx'
 import Movies from './components/Movies.jsx'
 import MoviesByGenre from './components/MoviesByGenre.jsx'
 import SearchResults from './components/SearchResults.jsx'
+import Footer from './components/Footer.jsx'
 function App() {
 
 return(
@@ -23,6 +24,7 @@ return(
         <Route path='/searchresults/' element={<SearchResults/>}></Route>
       </Routes>
       </Container>
+      <Footer/>
     </BrowserRouter>
 
   </>

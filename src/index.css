@@ -100,7 +100,14 @@ button{
   font-size: 14px;
 
 }
-
+.mySwiper{
+  margin-left: 45px;
+}
+@media(min-width:900px){
+  .mySwiper{
+    margin-left: 10px;
+  }
+}
 /* Loader */
 .spinner {
     animation: rotator 1.4s linear infinite;

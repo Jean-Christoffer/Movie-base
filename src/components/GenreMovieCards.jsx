@@ -5,7 +5,7 @@ export default function GenreMoviesCards(props){
     const {details} = props
     return(
         <>
-            <Paper sx={{ bgcolor:'#f5f5f5',color:'black', display:'flex',flexDirection:{xs:'column', md:'row'}, maxWidth:'620px',p:1}}>
+            <Paper sx={{ bgcolor:'#f5f5f5',color:'black', display:'flex',flexDirection:{xs:'column', md:'row'}, maxWidth:'620px',width:'100%',p:1}}>
                 <Box sx={{ width:'65px' }}>
                     <img className='genreimg' src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} />
                 </Box>

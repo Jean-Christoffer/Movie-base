@@ -3,24 +3,29 @@ import Typography from '@mui/material/Typography';
 import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import {Link} from 'react-router-dom'
+import StarIcon from '@mui/icons-material/Star';
 export default function Upcoming({details}){
     return(
         <>
 
-            <Paper sx={{display:'flex',flexDirection:'column', justifyContent:'center',mb:1, p:1, bgcolor:'#191919',width:'320px',height:'180px' }}>
-            <Typography variant='subtitle2' component='p' sx={{color:'white', mb:0.5 }}>{details.original_title ?? details.title}</Typography>
-            <Box sx={{ display:'flex', justifyContent:'space-between', alignItems:'center' }}>
-                <Box sx={{width:'100px'}}>
-                    <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='caro-img' />
-                </Box>
-                <Stack spacing={1}>
-                    <Rating name="half-rating-read"  size="small" value={details.vote_average / 2} precision={0.5} readOnly />
-                </Stack>
-                <Box>
-                    <Link className='details-cta' to={`details/${details.id}`}>Details</Link>
-                </Box>
+
+        <Paper sx={{display:'flex',flexDirection:'column', bgcolor:'#191919',width:'100%',textAlign:'center',maxWidth:'220px' }}>
+
+            <Box sx={{ height:'320px' }}> 
+                <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='latest-img'  />
             </Box>
-            </Paper>
+            <Typography  variant='subtitle2' component='p' sx={{color:'white', mb:0.5,height:'2.5rem',textAlign:'left', p:1 }}>{details.original_title ?? details.title}</Typography>
+            <Box sx={{ display:'flex',alignItems:'center',gap:'5px',ml:1 }}>
+                <StarIcon sx={{ color:'#dba506' }}  />
+                 <Typography sx={{ fontWeight:'bold',color:'white' }}>{details.vote_average === 0 ? 'No rating yet' :
+                         details.vote_average % 1 === 0 ? details.vote_average : details.vote_average.toFixed(1)}
+                </Typography>
+            </Box>
+            <Box>
+                <Link className=' cta-up' to={`details/${details.id}`}>Details</Link>
+            </Box>
+
+        </Paper>
 
         </>
     )

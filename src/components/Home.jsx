@@ -7,13 +7,14 @@ import UpcomingMovies from './Upcoming.jsx';
 import Loader from './Loader.jsx'
 import Latest from './Latest.jsx'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y,EffectFlip } from 'swiper';
 import 'swiper/css/bundle';
+import "swiper/css/effect-cards";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-// Add this CSS to the top of your Movies component
-
-SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y]);
+import { EffectCards } from "swiper";
+import { EffectCreative } from "swiper";
+SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
     const theme = useTheme();
@@ -74,18 +75,30 @@ export default function Movies(){
                    
                     </Swiper> }
                 </Box>
-                <Box>
-                <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:1, mb: {md:1, xs:0}, mt:{xs:5, md:0}}}>Upcoming Movies</Typography>
-                <Box p={1} maxHeight={500}  sx={{ overflowY:'scroll',position:'relative',mt:1.5}}>
-                
-                {loading ? <Loader/> : upComing.map(movie => <UpcomingMovies key={movie.id} details= {movie} />)}
-                </Box>
-                </Box>
+                <Box sx={{width:{xs:'100%', md:'300px'},heigth:'100px', position:'relative' }}>  
+                    <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'},
+                     marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming Movies</Typography>
+        
+                    <Swiper  
+                        effect={"cards"}
+                        grabCursor={true}
+                        modules={[EffectCards]}
+                        className="mySwiper"
+                                                            >
+                        { upComing.map(movie =><SwiperSlide key={movie.id} ><UpcomingMovies key={movie.id} details= {movie} /></SwiperSlide>)}
+                                
+                    </Swiper>
+
+                </Box> 
+
+
             </Container>
 
+
+    
             <Container sx={{ mb:2, mt:3 }} >
                 {loading && <Loader/>}
-                <Typography  variant='h4' component='h2' sx={{ ml:0.5,color:'#dba506',mb: {md:1, xs:0} }}>Popular</Typography>
+                <Typography  variant='h4' component='h2' sx={{ ml:0.5,color:'#dba506',mb: {md:1, xs:1},textAlign:{xs:'center', md:'left'} }}>Popular</Typography>
                     <Swiper  
                     modules={[Navigation, Scrollbar, A11y]}
                     navigation

@@ -90,7 +90,7 @@ function handleQuery(event){
 }
 useEffect(() => {
   if (query !== null) {
-    navigate('/searchresults', { state: { query } });
+    navigate('/searchresults', { state: { query,searchInput }});
     setQuery(null)
     setSearchInput('')
   }
@@ -152,8 +152,8 @@ useEffect(() => {
                 inputProps={{ 'aria-label': 'search' }}
                 value={searchInput}
               />
-            <IconButton sx={{ color:'white' }} size='small' type="submit" aria-label="search">
-                <SearchIcon  />
+              <IconButton sx={{ color:'white',position:'absolute',right:'10px',top:'15px' }} size='small' type="submit" aria-label="search">
+                  <SearchIcon sx={{ position:'absolute' }}  />
               </IconButton>
 
             </Search>
