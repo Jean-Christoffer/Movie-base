@@ -75,6 +75,8 @@ export default function Movies(){
                     scrollbar={{ draggable: true }}
                     spaceBetween={50}
                     slidesPerView={1}
+                    slidesPerGroup={1}
+                    loop
                                            >
                       {data.map((movie) => <SwiperSlide key={movie.id} ><ImageCarousel key={movie.id} details={movie} /></SwiperSlide>)}
                    
