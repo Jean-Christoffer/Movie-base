@@ -1,10 +1,8 @@
 import { Paper,Box } from '@mui/material'
 import Typography from '@mui/material/Typography';
-import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
 import {Link} from 'react-router-dom'
 import StarIcon from '@mui/icons-material/Star';
-export default function Upcoming({details}){
+export default function MovieCardsHome({details}){
     return(
         <>
 

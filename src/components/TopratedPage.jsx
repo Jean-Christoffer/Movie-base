@@ -3,7 +3,7 @@ import {key} from './key.jsx'
 import {Typography, Box, Container,Paper,Button} from '@mui/material';
 import Loader from './Loader.jsx'
 import {useEffect,useState} from 'react'
-import TopRated from './TopRated.jsx'
+import TopRated from './TopRatedCard.jsx'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';

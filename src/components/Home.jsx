@@ -1,18 +1,17 @@
 import {useEffect,useState} from 'react'
 import {key} from './key.jsx'
 import ImageCarousel from './ImageCarousel.jsx'
-import {Typography, Box, Container} from '@mui/material';
+import MovieCardsHome from './MoveCardHome.jsx';
 import useFetch from "./useFetch.jsx";
-import UpcomingMovies from './Upcoming.jsx';
 import Loader from './Loader.jsx'
-import Latest from './Latest.jsx'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import { Slide } from '@mui/material';
+
+import {Typography, Box, Container} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
+
 import { EffectCards } from "swiper";
-import Fade from '@mui/material/Fade';
+import { Swiper, SwiperSlide } from 'swiper/react'
+import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css/bundle';
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
 export default function Movies(){
@@ -54,9 +53,6 @@ export default function Movies(){
 
     return (
         <>
-
-            
-        
             <Container
              sx={{display:'flex',mt:5, justifyContent:{xs:'center', md:'space-around'},
              flexDirection:{xs:'column', md:'row'}, alignItems:{xs:'center',md:'flex-start'} }}>
@@ -92,7 +88,7 @@ export default function Movies(){
                         modules={[EffectCards]}
                         className="mySwiper"
                                                             >
-                        { upComing.map(movie =><SwiperSlide key={movie.id} ><UpcomingMovies key={movie.id} details= {movie} /></SwiperSlide>)}
+                        { upComing.map(movie =><SwiperSlide key={movie.id} ><MovieCardsHome key={movie.id} details= {movie} /></SwiperSlide>)}
                                 
                     </Swiper>
 
@@ -101,8 +97,6 @@ export default function Movies(){
 
             </Container>
             
-
-
             <Container sx={{ mb:2, mt:3 }} >
                 {loading && <Loader/>}
                 <Typography  variant='h4' component='h2' sx={{ ml:0.5,color:'#dba506',mb: {md:1, xs:1},textAlign:{xs:'center', md:'left'} }}>Popular</Typography>
@@ -112,7 +106,7 @@ export default function Movies(){
                     spaceBetween={space}
                     slidesPerView={slidesPerView}
                                            >
-                      {popular.map((movie) => <SwiperSlide key={movie.id} ><Latest key={movie.id} details={movie} /></SwiperSlide>)}
+                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome key={movie.id} details={movie} /></SwiperSlide>)}
                    
                     </Swiper> 
             </Container>

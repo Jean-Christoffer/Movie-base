@@ -1,5 +1,4 @@
-import {Typography, Box,Paper,Button} from '@mui/material';
-import {Link} from 'react-router-dom'
+import {Typography,Paper,Button} from '@mui/material';
 export default function GenreCard(props){
     const {details,handleClick} = props
     return(

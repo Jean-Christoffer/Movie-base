@@ -89,7 +89,6 @@ function handleSelect(e){
         }
     },[movieList])
 
-    console.log(sortedMovies)
     return(
         <>
         

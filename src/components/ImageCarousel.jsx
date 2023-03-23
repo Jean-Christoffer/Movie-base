@@ -3,9 +3,7 @@ import { Paper, Button,Box } from '@mui/material'
 import Typography from '@mui/material/Typography';
 import {Link} from 'react-router-dom'
 export default function ImageCarousel({details})
-{
-  
-    
+{  
     return (
 
         <Paper sx={{bgcolor:'rgb(0, 0, 0)',mt:2, width:{xs:'100%' } }} >
