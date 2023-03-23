@@ -1,6 +1,4 @@
 import {Typography, Box, Paper} from '@mui/material';
-import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
 import {Link} from 'react-router-dom'
 import StarIcon from '@mui/icons-material/Star';
 export default function Latest({details}){

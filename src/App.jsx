@@ -7,6 +7,7 @@ import Movies from './components/Movies.jsx'
 import MoviesByGenre from './components/MoviesByGenre.jsx'
 import SearchResults from './components/SearchResults.jsx'
 import Footer from './components/Footer.jsx'
+
 function App() {
 
 return(
@@ -15,15 +16,17 @@ return(
 
     <BrowserRouter>
       <Navbar/>
-      <Container>
+
+      <Container sx={{ display:'flex', flexDirection:'column',minHeight:'100vh' }} >
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/details/:id' element={<Details/>}></Route>
-        <Route path='/movies/' element={<Movies/>}></Route>
-        <Route path='/genre/' element={<MoviesByGenre/>}></Route>
+        <Route path='/' element={<Home  />}></Route>
+        <Route path='/details/:id' element={<Details />}></Route>
+        <Route path='/movies/' element={<Movies />}></Route>
+        <Route path='/genre/' element={<MoviesByGenre />}></Route>
         <Route path='/searchresults/' element={<SearchResults/>}></Route>
       </Routes>
       </Container>
+
       <Footer/>
     </BrowserRouter>
 

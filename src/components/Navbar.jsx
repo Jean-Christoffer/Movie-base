@@ -97,7 +97,7 @@ useEffect(() => {
 }, [query])
 
   return (
-    <AppBar position="static" sx={{ bgcolor:'#191919', display:'flex', justifyContent:'space-between' }}>
+    <AppBar position="sticky" sx={{ bgcolor:'#191919', display:'flex', justifyContent:'space-between' }}>
       <Container maxWidth="xl">
  
         <Toolbar disableGutters> 

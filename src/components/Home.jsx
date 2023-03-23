@@ -7,13 +7,13 @@ import UpcomingMovies from './Upcoming.jsx';
 import Loader from './Loader.jsx'
 import Latest from './Latest.jsx'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y,EffectFlip } from 'swiper';
-import 'swiper/css/bundle';
-import "swiper/css/effect-cards";
+import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Slide } from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import { EffectCards } from "swiper";
-import { EffectCreative } from "swiper";
+import Fade from '@mui/material/Fade';
+import 'swiper/css/bundle';
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
@@ -54,7 +54,12 @@ export default function Movies(){
 
     return (
         <>
-            <Container sx={{display:'flex',mt:5, justifyContent:{xs:'center', md:'space-around'}, flexDirection:{xs:'column', md:'row'}, alignItems:{xs:'center',md:'flex-start'} }}>
+
+            
+        
+            <Container
+             sx={{display:'flex',mt:5, justifyContent:{xs:'center', md:'space-around'},
+             flexDirection:{xs:'column', md:'row'}, alignItems:{xs:'center',md:'flex-start'} }}>
                 <Box sx={{width:{xs:'100%', md:'700px'}, position:'relative' }} >
                     <Typography variant={'h4'} component='h1' sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:{xs:0, md:0}}}>Trending</Typography>
                     {loading ? <Loader/> :
@@ -93,9 +98,9 @@ export default function Movies(){
 
 
             </Container>
+            
 
 
-    
             <Container sx={{ mb:2, mt:3 }} >
                 {loading && <Loader/>}
                 <Typography  variant='h4' component='h2' sx={{ ml:0.5,color:'#dba506',mb: {md:1, xs:1},textAlign:{xs:'center', md:'left'} }}>Popular</Typography>
@@ -109,6 +114,8 @@ export default function Movies(){
                    
                     </Swiper> 
             </Container>
+
+
         </>
     )
 }

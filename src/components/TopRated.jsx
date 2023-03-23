@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import StarIcon from '@mui/icons-material/Star';
 
 export default function TopRated(props){
-    const {details, rank} = props
+    const {details, rank,loading, loaderSpinner} = props
     return(
         <>
             <Paper  sx={{ bgcolor:'#f5f5f5',color:'black', display:'flex', width:'100%',p:1, alignItems:'center', mb:1}}>
                 <Box sx={{ width:'90px' }}>
-                    <img src={details.poster_path ? `http://image.tmdb.org/t/p/w500/${details.poster_path}` : '/2922280_27002.jpg'} className='toprated'/>
+                    {loading ? loaderSpinner : <img src={details.poster_path ? `http://image.tmdb.org/t/p/w500/${details.poster_path}` : '/2922280_27002.jpg'} className='toprated'/>}
                 </Box>
                 <Typography sx={{ ml:1 }}>{rank}.{`\u00A0`}</Typography>
 
