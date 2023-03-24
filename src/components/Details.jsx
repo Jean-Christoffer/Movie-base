@@ -99,7 +99,7 @@ export default function Details(){
         setOfficialTrailer(found.key)
     }
    },[trailer])
-
+   
     return(
         <>
         <Container sx={{ mt:2 }}>
@@ -108,7 +108,7 @@ export default function Details(){
             <Box sx={{ display:'flex', flexDirection:{xs:'column', md:'row'}, mt:2 }}>
                 <Box  sx={{ width:{xs:'100%', md:'320px'},position:'relative' }} >
                     {loading && <Loader/>}
-                    <img src={`http://image.tmdb.org/t/p/w500/${data.poster_path}` ?? '/imdb.png'} className='bear-img' />
+                    <img src={data.poster_path ? `http://image.tmdb.org/t/p/w500/${data.poster_path}` : '/2922280_27002.jpg'} className='bear-img' />
                 </Box>
                 <Box sx={{ width:'100%', height:{xs:'350px', md:'auto'}, position:'relative' }}>
                     {loading && <Loader/>}

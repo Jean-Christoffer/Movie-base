@@ -65,10 +65,10 @@ export default function Movies(){
             
             <Paper sx={{ mt:2, mb:2 }}>
                 <Typography variant="h6" component='h1' sx={{ p:1 }}>
-                TMDB Top Movies
+                 Top 100 Movies
                 </Typography>
                 <Typography variant="subtitle2" component='p' sx={{ p:1 }}>
-                TMDB Top 100 movies as rated by regular TMDB voters.
+                Showing Top 100 movies as rated by regular TMDB voters.
                 </Typography>
                 <Box sx={{ display:'flex', alignItems:'center' }}>
                 <Typography variant="subtitle2" component='p' sx={{ p:1 }}>
