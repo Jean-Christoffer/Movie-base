@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react'
-import {key} from  './key.jsx';
+
 import ImageCarousel from './ImageCarousel.jsx'
 import MovieCardsHome from './MoveCardHome.jsx';
 import useFetch from "./useFetch.jsx";
@@ -11,9 +11,10 @@ import { useTheme } from '@mui/material/styles';
 import { EffectCards } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import dotenv from 'dotenv';
 import 'swiper/css/bundle';
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
-
+dotenv.config();
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
     const theme = useTheme();
@@ -38,9 +39,9 @@ export default function Movies(){
 
     useEffect(()=>{
         Promise.all([
-            get(`trending/movie/day?api_key=${key}`),
-            get(`movie/upcoming?api_key=${key}&language=en-US&page=1`),
-            get(`movie/popular?api_key=${key}&language=en-US&page=1`)
+            get(`trending/movie/day?api_key=${process.env.REACT_APP_API_KEY}`),
+            get(`movie/upcoming?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`),
+            get(`movie/popular?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`)
         ])
         .then(([trendingData, upComingData, popularData]) =>{
             setData(trendingData.results)

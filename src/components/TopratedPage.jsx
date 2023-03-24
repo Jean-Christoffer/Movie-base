@@ -1,5 +1,5 @@
 import useFetch from "./useFetch.jsx";
-import {key} from './key.jsx';
+
 import {Typography, Box, Container,Paper,Button} from '@mui/material';
 import Loader from './Loader.jsx'
 import {useEffect,useState} from 'react'
@@ -10,6 +10,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
@@ -24,7 +26,7 @@ export default function Movies(){
         const totalPages = 5;
         let promises = [];
         for (let page = 1; page <= totalPages; page++) {
-          promises.push(get(`movie/top_rated?api_key=${key}&language=en-US&page=${page}`));
+          promises.push(get(`movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`));
         } 
         Promise.all(promises)
           .then(results => {

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import useFetch from "./useFetch.jsx";
-import {key} from  './key.jsx'; 
+
 import {Typography, Box, Container,Stack,Rating} from '@mui/material';
 import {useState,useEffect} from 'react'
 import Loader from './Loader.jsx'
@@ -10,8 +10,11 @@ import  { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{ Navigation, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/css/bundle';
+import dotenv from 'dotenv';
+
 
 SwiperCore.use([Navigation, Scrollbar, A11y]);
+dotenv.config();
 export default function Details(){
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -45,10 +48,10 @@ export default function Details(){
 
     useEffect(() => {
         Promise.all([
-            get(`movie/${params.id}?api_key=${key}&language=en-US`),
-            get(`movie/${params.id}/videos?api_key=${key}&language=en-US`),
-            get(`movie/${params.id}/credits?api_key=${key}&language=en-US`),
-            get(`movie/${params.id}/images?api_key=${key}`)
+            get(`movie/${params.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`),
+            get(`movie/${params.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`),
+            get(`movie/${params.id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`),
+            get(`movie/${params.id}/images?api_key=${process.env.REACT_APP_API_KEY}`)
         ])
         .then(([movieData, trailerData, creditsData, imageData]) => {
             setData(movieData);

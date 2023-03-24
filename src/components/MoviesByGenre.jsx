@@ -1,5 +1,5 @@
 import useFetch from "./useFetch";
-import {key} from './key.jsx';
+
 import {useState, useEffect} from 'react'
 import {Typography, Box,Paper,Container,Button} from '@mui/material';
 import GenreCard from "./GenreCard.jsx";
@@ -8,6 +8,8 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import dotenv from 'dotenv';
+dotenv.config();
 export default function MoviesByGenre(){
 const {get, loading} = useFetch(`https://api.themoviedb.org/3/`)
 const [movieList, setMovieList] = useState([])
@@ -33,8 +35,8 @@ function handleSelect(e){
 }
     useEffect(()=>{
         Promise.all([
-            get(`/discover/movie?api_key=${key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreValue}&with_watch_monetization_types=flatrate`),
-            get(`genre/movie/list?api_key=${key}&language=en-US`)
+            get(`/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreValue}&with_watch_monetization_types=flatrate`),
+            get(`genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`)
         ])
         
         .then(([movieData, genreData]) => {
