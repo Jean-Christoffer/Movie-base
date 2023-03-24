@@ -1,5 +1,5 @@
 import {useEffect,useState} from 'react'
-import {key} from './key.jsx'
+import {key} from  './key.jsx';
 import ImageCarousel from './ImageCarousel.jsx'
 import MovieCardsHome from './MoveCardHome.jsx';
 import useFetch from "./useFetch.jsx";
@@ -8,14 +8,12 @@ import Loader from './Loader.jsx'
 import {Typography, Box, Container} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
-import dotenv from 'dotenv';
 import { EffectCards } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import 'swiper/css/bundle';
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
-dotenv.config();
-const apiKey = process.env.REACT_APP_API_KEY;
+
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
     const theme = useTheme();
@@ -40,7 +38,7 @@ export default function Movies(){
 
     useEffect(()=>{
         Promise.all([
-            get(`trending/movie/day?api_key=${apiKey}`),
+            get(`trending/movie/day?api_key=${key}`),
             get(`movie/upcoming?api_key=${key}&language=en-US&page=1`),
             get(`movie/popular?api_key=${key}&language=en-US&page=1`)
         ])

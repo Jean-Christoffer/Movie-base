@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import useFetch from "./useFetch.jsx";
-import {key} from './key.jsx'
+import {key} from  './key.jsx'; 
 import {Typography, Box, Container,Stack,Rating} from '@mui/material';
 import {useState,useEffect} from 'react'
 import Loader from './Loader.jsx'
@@ -10,6 +10,7 @@ import  { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{ Navigation, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/css/bundle';
+
 SwiperCore.use([Navigation, Scrollbar, A11y]);
 export default function Details(){
     const theme = useTheme();

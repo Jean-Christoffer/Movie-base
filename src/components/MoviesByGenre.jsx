@@ -1,5 +1,5 @@
 import useFetch from "./useFetch";
-import {key} from './key.jsx'
+import {key} from './key.jsx';
 import {useState, useEffect} from 'react'
 import {Typography, Box,Paper,Container,Button} from '@mui/material';
 import GenreCard from "./GenreCard.jsx";
@@ -17,6 +17,7 @@ const [sortedMovies, setSortedMovies] = useState([])
 const [genreValue, setGenreValue] = useState('')
 const [page, setPage] = useState(1)
 const [title, setTitle] = useState('')
+
 
 function handleGenreValue(e){
     setGenreValue(prevVal => {

@@ -2,9 +2,11 @@ import {Typography, Container} from '@mui/material';
 import Loader from './Loader.jsx'
 import {useEffect,useState} from 'react'
 import useFetch from "./useFetch.jsx";
-import {key} from './key.jsx'
+import {key} from './key.jsx';
 import { useLocation } from 'react-router-dom';
 import TopRated from './TopRatedCard.jsx';
+
+
 export default function SearchResults(props){
     const {details} = props
     const {get,loading} = useFetch(`https://api.themoviedb.org/3/`)
@@ -12,7 +14,7 @@ export default function SearchResults(props){
     const [query, setQuery] = useState('')
     const [searchData, setSearchData] = useState([])
 
-    console.log(location)
+
     useEffect(()=>{
         get(`search/movie?api_key=${key}&language=en-US&query=${location.state.query}&page=1&include_adult=false`)
         .then(data=> setSearchData(data.results))

@@ -1,5 +1,5 @@
 import useFetch from "./useFetch.jsx";
-import {key} from './key.jsx'
+import {key} from './key.jsx';
 import {Typography, Box, Container,Paper,Button} from '@mui/material';
 import Loader from './Loader.jsx'
 import {useEffect,useState} from 'react'
