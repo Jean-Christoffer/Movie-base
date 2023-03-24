@@ -1,5 +1,5 @@
 
-import { Paper, Button,Box } from '@mui/material'
+import { Paper,Box } from '@mui/material'
 import Typography from '@mui/material/Typography';
 import {Link} from 'react-router-dom'
 export default function ImageCarousel({details})
