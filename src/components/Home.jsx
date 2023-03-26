@@ -79,9 +79,9 @@ export default function Movies(){
                    
                     </Swiper> }
                 </Box>
-                <Box sx={{width:{xs:'100%', md:'300px'},heigth:'100px', position:'relative' }}>  
+                <Box sx={{width:{ xs:'255px',md:'300px'},heigth:'100px'}}>  
                     <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'},
-                     marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming Movies</Typography>
+                     marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming movies</Typography>
         
                     <Swiper  
                         effect={"cards"}
