@@ -160,8 +160,8 @@ useEffect(() => {
           </form>
   
           <Box 
-            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, mt:1 }} >
-            <Link to='/'> <img src='/mdb.svg' width={'80px'} /></Link>
+            sx={{ display: { xs: 'flex', md: 'none' }, mr: 1, mt:1,ml:1 }} >
+            <Link to='/'> <img src='/mdb.svg' width={'60px'} /></Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>
