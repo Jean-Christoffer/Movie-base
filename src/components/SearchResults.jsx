@@ -5,8 +5,6 @@ import useFetch from "./useFetch.jsx";
 
 import { useLocation } from 'react-router-dom';
 import TopRated from './TopRatedCard.jsx';
-import dotenv from 'dotenv';
-dotenv.config();
 
 export default function SearchResults(props){
     const {details} = props

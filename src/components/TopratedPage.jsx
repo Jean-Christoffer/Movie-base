@@ -10,8 +10,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
-import dotenv from 'dotenv';
-dotenv.config();
+
 
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)

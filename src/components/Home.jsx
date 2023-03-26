@@ -11,10 +11,10 @@ import { useTheme } from '@mui/material/styles';
 import { EffectCards } from "swiper";
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
-import dotenv from 'dotenv';
+
 import 'swiper/css/bundle';
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
-dotenv.config();
+
 export default function Movies(){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
     const theme = useTheme();

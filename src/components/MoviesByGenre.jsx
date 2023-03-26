@@ -8,8 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import dotenv from 'dotenv';
-dotenv.config();
+
 export default function MoviesByGenre(){
 const {get, loading} = useFetch(`https://api.themoviedb.org/3/`)
 const [movieList, setMovieList] = useState([])

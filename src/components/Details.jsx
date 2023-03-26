@@ -10,11 +10,11 @@ import  { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{ Navigation, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/css/bundle';
-import dotenv from 'dotenv';
+
 
 
 SwiperCore.use([Navigation, Scrollbar, A11y]);
-dotenv.config();
+
 export default function Details(){
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
