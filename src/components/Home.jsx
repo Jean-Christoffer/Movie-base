@@ -39,9 +39,9 @@ export default function Movies(){
 
     useEffect(()=>{
         Promise.all([
-            get(`trending/movie/day?api_key=${import.meta.env}`),
-            get(`movie/upcoming?api_key=${import.meta.env}&language=en-US&page=1`),
-            get(`movie/popular?api_key=${import.meta.env}&language=en-US&page=1`)
+            get(`trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}`),
+            get(`movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`),
+            get(`movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
         ])
         .then(([trendingData, upComingData, popularData]) =>{
             setData(trendingData.results)

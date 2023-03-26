@@ -34,8 +34,8 @@ function handleSelect(e){
 }
     useEffect(()=>{
         Promise.all([
-            get(`/discover/movie?api_key=${import.meta.env}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreValue}&with_watch_monetization_types=flatrate`),
-            get(`genre/movie/list?api_key=${import.meta.env}&language=en-US`)
+            get(`/discover/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genreValue}&with_watch_monetization_types=flatrate`),
+            get(`genre/movie/list?api_key=${import.meta.env.VITE_API_KEY}&language=en-US`)
         ])
         
         .then(([movieData, genreData]) => {

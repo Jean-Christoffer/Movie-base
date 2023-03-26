@@ -15,7 +15,7 @@ export default function SearchResults(props){
 
 
     useEffect(()=>{
-        get(`search/movie?api_key=${import.meta.env}&language=en-US&query=${location.state.query}&page=1&include_adult=false`)
+        get(`search/movie?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&query=${location.state.query}&page=1&include_adult=false`)
         .then(data=> setSearchData(data.results))
         .catch(error => console.log(error))
     },[location])
