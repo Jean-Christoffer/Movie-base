@@ -48,10 +48,10 @@ export default function Details(){
 
     useEffect(() => {
         Promise.all([
-            get(`movie/${params.id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`),
-            get(`movie/${params.id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`),
-            get(`movie/${params.id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`),
-            get(`movie/${params.id}/images?api_key=${process.env.REACT_APP_API_KEY}`)
+            get(`movie/${params.id}?api_key=${import.meta.env}&language=en-US`),
+            get(`movie/${params.id}/videos?api_key=${import.meta.env}&language=en-US`),
+            get(`movie/${params.id}/credits?api_key=${import.meta.env}&language=en-US`),
+            get(`movie/${params.id}/images?api_key=${import.meta.env}`)
         ])
         .then(([movieData, trailerData, creditsData, imageData]) => {
             setData(movieData);

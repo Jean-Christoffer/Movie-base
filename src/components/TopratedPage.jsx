@@ -25,7 +25,7 @@ export default function Movies(){
         const totalPages = 5;
         let promises = [];
         for (let page = 1; page <= totalPages; page++) {
-          promises.push(get(`movie/top_rated?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${page}`));
+          promises.push(get(`movie/top_rated?api_key=${import.meta.env}&language=en-US&page=${page}`));
         } 
         Promise.all(promises)
           .then(results => {
