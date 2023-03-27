@@ -61,14 +61,14 @@ export default function Movies(){
                     <Typography variant={'h4'} component='h1' sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:{xs:0, md:0}}}>Trending</Typography>
                     {loading ? <Loader/> :
                     <Swiper
-                    modules={[Navigation,Autoplay, Pagination, Scrollbar, A11y]}
+                    modules={[Navigation,Autoplay, Scrollbar, A11y]}
                     navigation
                     
                     autoplay={{
                         "delay": 4500,
                         "disableOnInteraction": false
                       }}
-                    pagination={{ clickable: true }}
+
                     scrollbar={{ draggable: true }}
                     spaceBetween={50}
                     slidesPerView={1}
@@ -80,9 +80,11 @@ export default function Movies(){
                     </Swiper> }
                 </Box>
      
-                    <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'},
+                    <Typography variant='h4' component='h2'  sx={{ color:'#dba506',width:'100%', textAlign:'center', display:{xs:'block',md:'none'},
                      marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming movies</Typography>
-                   <Box sx={{width:{ xs:'210px',md:'300px'},heigth:'100px'}}>  
+                   <Box sx={{width:{ xs:'210px',md:'300px'},heigth:'100px'}}>
+                   <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, display:{xs:'none',md:'block'},
+                     marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming movies</Typography>  
                     <Swiper  
                         effect={"cards"}
                         grabCursor={true}

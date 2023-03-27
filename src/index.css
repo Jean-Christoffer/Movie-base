@@ -60,7 +60,10 @@ button{
     border-radius: 5px;
 }
 .details-cta{
-color: white;
+  background-color: rgb(19, 18, 18);
+  color: #dba506;
+  padding: 10px 30px;
+  border-radius: 5px;
 
 }
 .cta-up{
