@@ -1,4 +1,4 @@
 ### Movie-base
-Movie database built with React and Material-UI
+Movie database built with React
 API from TMDB
 
