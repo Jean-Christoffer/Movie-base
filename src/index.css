@@ -60,12 +60,8 @@ button{
     border-radius: 5px;
 }
 .details-cta{
-    margin: 10px 0 40px 0;
-    background: #dba506;
-    padding: 5px 10px;
-    color: black;
-    border-radius: 5px;
-    font-weight: 700;
+color: white;
+
 }
 .cta-up{
   display: block;
@@ -101,7 +97,9 @@ button{
 
 }
 .mySwiper{
-  margin-left: 20px;
+width: 100%;
+
+ 
 }
 @media(min-width:900px){
   .mySwiper{

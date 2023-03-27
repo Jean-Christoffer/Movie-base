@@ -159,6 +159,10 @@ useEffect(() => {
             </Search>
           </form>
 
+          <Box 
+            sx={{mt:1, display: { xs: 'flex', md: 'none' }, ml: 1 }} >
+           <Link to='/'> <img src='/mdb.svg' width={'60px'} /></Link>
+          </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>
             {pages.map((page,index) => (

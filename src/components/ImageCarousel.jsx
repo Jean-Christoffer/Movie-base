@@ -14,8 +14,10 @@ export default function ImageCarousel({details})
             <Box sx={{width:{xs:'60px', sm:'100px',md:'120px'}, position:'absolute', display:{xs:'none', md:'block'}, bottom:'40px',left:'10px' }}>
                 <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='absolute-img caro-img'/>
             </Box>
-            <Typography variant='h6' component='h2' sx={{color:'white', }}>{details.title ?? details.name}</Typography>
-            <Link className='details-cta' to={`details/${details.id}`}>Details</Link>
+            <Typography variant='h6' component='h2' sx={{color:'white' }} >{details.title ?? details.name}</Typography>
+            <Box sx={{ m:5 }}>
+              <Link className='details-cta' to={`details/${details.id}`}>Details</Link>
+            </Box>
           </Box>
         </Paper>
 

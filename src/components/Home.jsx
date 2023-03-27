@@ -56,7 +56,7 @@ export default function Movies(){
         <>
             <Container
              sx={{display:'flex',mt:5, justifyContent:{xs:'center', md:'space-around'},
-             flexDirection:{xs:'column', md:'row'}, alignItems:{xs:'center',md:'flex-start'} }}>
+             flexDirection:{xs:'column', md:'row'}, alignItems:{xs:'flex-start',md:'flex-start'} }}>
                 <Box sx={{width:{xs:'100%', md:'700px'}, position:'relative' }} >
                     <Typography variant={'h4'} component='h1' sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'}, marginLeft:{xs:0, md:0}}}>Trending</Typography>
                     {loading ? <Loader/> :
@@ -79,10 +79,10 @@ export default function Movies(){
                    
                     </Swiper> }
                 </Box>
-                <Box sx={{width:{ xs:'255px',md:'300px'},heigth:'100px'}}>  
+     
                     <Typography variant='h4' component='h2'  sx={{ color:'#dba506', textAlign:{xs:'center', md:'left'},
                      marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming movies</Typography>
-        
+                   <Box sx={{width:{ xs:'210px',md:'300px'},heigth:'100px'}}>  
                     <Swiper  
                         effect={"cards"}
                         grabCursor={true}
