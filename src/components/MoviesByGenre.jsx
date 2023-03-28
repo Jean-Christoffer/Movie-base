@@ -19,7 +19,7 @@ const [genreValue, setGenreValue] = useState('')
 const [page, setPage] = useState(1)
 const [title, setTitle] = useState('')
 
-
+console.log(movieList)
 function handleGenreValue(e){
     setGenreValue(prevVal => {
         prevVal = e.currentTarget.value

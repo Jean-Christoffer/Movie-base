@@ -14,7 +14,7 @@ export default function GenreMoviesCards(props){
                         <Typography>
                             <Link className='top-rated-title genreLink' to={`/details/${details.id}`}>{details.original_title ?? details.name}</Link>
                         </Typography>
-                        <Typography  variant='subtitle'>{`\u00A0`}({details.release_date.substring(0,4)})</Typography>                    
+                        <Typography  variant='subtitle'>{`\u00A0`}({details.release_date ? details.release_date.substring(0,4) : 'No release date yet'})</Typography>                    
                     </Box>
 
 
