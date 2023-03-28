@@ -7,10 +7,10 @@ import { useLocation } from 'react-router-dom';
 import TopRated from './TopRatedCard.jsx';
 
 export default function SearchResults(props){
-    const {details} = props
+
     const {get,loading} = useFetch(`https://api.themoviedb.org/3/`)
     const location = useLocation()
-    const [query, setQuery] = useState('')
+
     const [searchData, setSearchData] = useState([])
 
 

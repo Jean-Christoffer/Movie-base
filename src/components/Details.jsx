@@ -8,7 +8,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import { useTheme } from '@mui/material/styles';
 import  { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{ Navigation, Scrollbar, A11y } from 'swiper';
-
+import StarIcon from '@mui/icons-material/Star';
 import 'swiper/css/bundle';
 
 
@@ -35,7 +35,7 @@ export default function Details(){
     const [trailer, setTrailer] = useState([])
     const [credits, setCredits] = useState({})
     const [images, setImages] = useState([])
-    console.log(credits)
+
     const [releaseDate, setReleaseDate] = useState('')
     const [runTime, setRunTime] = useState()
     const[officialTrailer, setOfficialTrailer] = useState('')
@@ -126,11 +126,14 @@ export default function Details(){
                <Box sx={{display:'flex', gap:'20px', mb:1 }}>
                     {genres.map((genre,index) => <Typography key={index} sx={{ color:'#dba506' }}>{genre.name}</Typography>)}
                 </Box>
-                { data.vote_average ?  <Stack sx={{ mb:1 }} spacing={1}>
-                   <Rating name="half-rating-read" size="medium" value={data.vote_average / 2} precision={0.5} readOnly
-                    
-                    /> 
-                </Stack> :  <Typography sx={{ mb:1,fontWeight:'bold' }} >No rating yet</Typography>}
+ 
+            {data.vote_average &&
+            <Box sx={{ display:'flex',alignItems:'center',gap:'5px',mt:1,mb:1 }}>
+                <StarIcon sx={{ color:'#dba506' }}  />
+                <Typography sx={{ fontWeight:'bold' }}>{data.vote_average === 0 ? 'No rating yet' :
+                    data.vote_average % 1 === 0 ? data.vote_average : data.vote_average.toFixed(1)}
+                </Typography>
+            </Box>}
 
                 <Typography sx={{ mb:0.1,fontWeight:'bold' }}>Overview:</Typography>
                 <Typography >{data.overview}</Typography>

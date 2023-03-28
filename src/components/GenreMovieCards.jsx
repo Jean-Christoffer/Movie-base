@@ -14,16 +14,20 @@ export default function GenreMoviesCards(props){
                         <Typography>
                             <Link className='top-rated-title genreLink' to={`/details/${details.id}`}>{details.original_title ?? details.name}</Link>
                         </Typography>
-                        <Typography  variant='subtitle'>{`\u00A0`}({details.release_date ? details.release_date.substring(0,4) : <Typography variant='caption'>TBA</Typography>})</Typography>                    
+                        <Typography  variant='subtitle'>{`\u00A0`}({details.release_date ? details.release_date.substring(0,4) :
+                         <Typography variant='caption'>TBA</Typography>})</Typography>                    
                     </Box>
 
 
                     <Box sx={{ display:'flex',alignItems:'center',gap:'5px' }}>
                         <StarIcon sx={{ color:'#dba506' }}  />
-                        <Typography sx={{ fontWeight:'bold' }}>{details.vote_average === 0 ? <Typography variant='caption'>No rating yet</Typography> : details.vote_average }</Typography>
+                        <Typography sx={{ fontWeight:'bold' }}>{details.vote_average === 0 ?
+                         <Typography variant='caption'>No rating yet</Typography> :
+                          details.vote_average }</Typography>
                     </Box>
                     <Typography variant='body1' sx={{ fontSize:'12px',mt:0.5 }}>{details.overview ?? ''}</Typography>
-                    <Typography variant='body2' sx={{ mt:0.5,fontWeight:'bold' }}>Votes: {details.vote_count === 0 ? <Typography variant='caption'>No votes</Typography> : details.vote_count }</Typography>
+                    <Typography variant='body2' sx={{ mt:0.5,fontWeight:'bold' }}>Votes: {details.vote_count === 0 ?
+                     <Typography variant='caption'>No votes</Typography> : details.vote_count }</Typography>
                 </Box>
             </Paper>
         </>
