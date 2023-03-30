@@ -20,7 +20,8 @@ export default function Movies(){
     const [sortedData, setSortedData] = useState([])
     const [sort, setSort] = useState('rating')
     const [isAscending, setIsAscending] = useState(true);
-
+    const [ranks, setRanks] = useState({})
+ 
     useEffect(() => {
         const totalPages = 5;
         let promises = [];
@@ -42,23 +43,24 @@ export default function Movies(){
         if (sort !== '') {
           let sorted = [...data]; 
           sorted.sort((a, b) => {
-            const order = isAscending ? 1 : -1; 
             if (sort === 'votes') {
-              return order * (b.vote_count - a.vote_count);
+              return  (b.vote_count - a.vote_count);
             } else if (sort === 'rating') {
-              return order * (b.vote_average - a.vote_average);
+              return  (b.vote_average - a.vote_average);
             } else if (sort === 'popularity') {
-              return order * (b.popularity - a.popularity);
+              return  (b.popularity - a.popularity);
             }
             return 0; 
           });
-          setSortedData(sorted);
+          setSortedData(isAscending ? sorted : sorted.reverse());
+         
         }
       }, [data, sort, isAscending]);
 
       function handleAscending(){
         setIsAscending(prevState => !prevState)
       }
+
 
     return(
         <>
@@ -94,7 +96,10 @@ export default function Movies(){
                 </Box>
             </Paper>
         {loading && <Loader/>}
-        {sortedData.map((movie,index) => <TopRated key={movie.id} details={movie} rank={index + 1} />)}
+        {sortedData.map((movie,index) => {
+
+          return <TopRated key={movie.id} details={movie} rank={index + 1} />
+        })}
         </Container>
         </>
     )
