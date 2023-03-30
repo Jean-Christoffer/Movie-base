@@ -13,6 +13,7 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore,{Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import 'swiper/css/bundle';
+
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
 
 export default function Movies(){
@@ -36,21 +37,50 @@ export default function Movies(){
     const [upComing, setUpComing] = useState([])
     const [popular, setPopular] = useState([])
     
+  
+    const [movieId, setMovieId] = useState([])
 
     useEffect(()=>{
         Promise.all([
             get(`trending/movie/day?api_key=${import.meta.env.VITE_API_KEY}`),
             get(`movie/upcoming?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`),
-            get(`movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`)
+            get(`movie/popular?api_key=${import.meta.env.VITE_API_KEY}&language=en-US&page=1`),
+
         ])
         .then(([trendingData, upComingData, popularData]) =>{
             setData(trendingData.results)
             setUpComing(upComingData.results)
             setPopular(popularData.results)
+
             
         })
         .catch(error => console.log(error))
     },[])
+
+
+
+
+    function handleFavorite(e){
+        if(!e.target.value){
+            return
+        }
+        setMovieId(prevState=> {
+     
+                if(prevState.includes(e.target.value)){
+                    return prevState
+                }else{
+                 
+                    return [...prevState, e.target.value]
+    
+                }
+     
+
+        })
+     
+    }    
+
+
+
 
     return (
         <>
@@ -91,7 +121,7 @@ export default function Movies(){
                         modules={[EffectCards]}
                         className="mySwiper"
                                                             >
-                        { upComing.map(movie =><SwiperSlide key={movie.id} ><MovieCardsHome key={movie.id} details= {movie} /></SwiperSlide>)}
+                        { upComing.map(movie =><SwiperSlide key={movie.id} ><MovieCardsHome  handleFavorite={handleFavorite} key={movie.id} details= {movie} /></SwiperSlide>)}
                                 
                     </Swiper>
 
@@ -109,7 +139,7 @@ export default function Movies(){
                     spaceBetween={space}
                     slidesPerView={slidesPerView}
                                            >
-                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome key={movie.id} details={movie} /></SwiperSlide>)}
+                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome  handleFavorite={handleFavorite} key={movie.id} details={movie} /></SwiperSlide>)}
                    
                     </Swiper> 
             </Container>

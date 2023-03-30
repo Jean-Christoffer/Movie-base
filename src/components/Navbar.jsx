@@ -21,7 +21,9 @@ const pages = [{
 ,{
   name:'Movies by genre',
   route:'genre'
-}]
+},
+{name:'Favorites',
+route:'favorites'}]
 
 
 
