@@ -4,6 +4,7 @@ import ImageCarousel from './ImageCarousel.jsx'
 import MovieCardsHome from './MoveCardHome.jsx';
 import useFetch from "./useFetch.jsx";
 import Loader from './Loader.jsx'
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import {Typography, Box, Container} from '@mui/material';
 import useMediaQuery from '@mui/material/useMediaQuery';
@@ -104,11 +105,11 @@ export default function Movies({handleFavorite}){
                         modules={[EffectCards]}
                         className="mySwiper"
                                                             >
-                        { upComing.map(movie =><SwiperSlide key={movie.id} ><MovieCardsHome  handleFavorite={handleFavorite} key={movie.id} details= {movie} /></SwiperSlide>)}
+                        { upComing.map(movie =><SwiperSlide key={movie.id}  ><MovieCardsHome  handleFavorite={handleFavorite} key={movie.id} details= {movie} /></SwiperSlide>)}
                                 
                     </Swiper>
 
-                </Box> 
+                    </Box> 
 
 
             </Container>
@@ -122,7 +123,7 @@ export default function Movies({handleFavorite}){
                     spaceBetween={space}
                     slidesPerView={slidesPerView}
                                            >
-                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome  handleFavorite={handleFavorite} key={movie.id} details={movie} /></SwiperSlide>)}
+                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome fav={<FavoriteIcon fontSize='small' sx={{ pointerEvents: 'none' }} />}  handleFavorite={handleFavorite} key={movie.id} details={movie} /></SwiperSlide>)}
                    
                     </Swiper> 
             </Container>

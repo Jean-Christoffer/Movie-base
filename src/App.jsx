@@ -11,9 +11,9 @@ import Favorites from './components/Favorites.jsx'
 import {useState,useEffect} from 'react'
 function App() {
 
-  const [movieIds, setMovieIds] = useState(JSON.parse(localStorage.getItem('moveId')) || [])
+  const [movieIds, setMovieIds] = useState(JSON.parse(sessionStorage.getItem('moveId')) || [])
   useEffect(() => {
-    localStorage.setItem('moveId', JSON.stringify(movieIds))
+    sessionStorage.setItem('moveId', JSON.stringify(movieIds))
   }, [movieIds])
   function handleFavorite(e){
 
@@ -44,11 +44,11 @@ return(
       <Container sx={{ display:'flex', flexDirection:'column',minHeight:'100vh' }} >
       <Routes>
         <Route path='/' element={<Home handleFavorite={handleFavorite}  />}></Route>
-        <Route path='/details/:id' element={<Details />}></Route>
+        <Route path='/details/:id' element={<Details handleFavorite={handleFavorite} />}></Route>
         <Route path='/movies/' element={<TopratedPage />}></Route>
         <Route path='/genre/' element={<MoviesByGenre />}></Route>
         <Route path='/searchresults/' element={<SearchResults/>}></Route>
-        <Route path='/favorites/' element={<Favorites movieIds={movieIds}/>}></Route>
+        <Route path='/favorites/' element={<Favorites movieIds={movieIds} setMovieIds={setMovieIds}/>}></Route>
       </Routes>
       </Container>
 

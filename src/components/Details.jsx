@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch.jsx";
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import IconButton from '@mui/material/IconButton';
 import { Typography, Box, Container } from "@mui/material";
 import { useState, useEffect } from "react";
 import Loader from "./Loader.jsx";
@@ -13,7 +14,7 @@ import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Scrollbar, A11y]);
 
-export default function Details() {
+export default function Details({handleFavorite}) {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
@@ -191,7 +192,11 @@ export default function Details() {
                   ? data.vote_average
                   : data.vote_average.toFixed(1)}
               </Typography>
+              <IconButton variant='text' onClick={handleFavorite} value={params.id} sx={{ml:'auto', color:'#dba506',zIndex: 11}}>
+                  <FavoriteIcon fontSize='medium' sx={{ pointerEvents: 'none' }} />
+                </IconButton>
             </Box>
+            
           )}
 
           <Typography sx={{ mb: 0.1, fontWeight: "bold" }}>

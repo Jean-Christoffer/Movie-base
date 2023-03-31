@@ -1,13 +1,13 @@
 import {useState,useEffect} from 'react'
 import MovieCardsHome from './MoveCardHome';
 import useFetch from "./useFetch.jsx";
-import {Typography, Box, Container} from '@mui/material';
-//{favMovies && favMovies.map(movie => <MovieCardsHome key={movie.id} details={movie} />)}
+import {Typography, Container} from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 export default function Favorites(props){
     const {get} = useFetch(`https://api.themoviedb.org/3/`)
-    const {movieIds} = props
-    const [favMovies, setFavMovies] = useState(JSON.parse(localStorage.getItem('movieList')) || [])
+    const {movieIds, setMovieIds} = props
+    const [favMovies, setFavMovies] = useState(JSON.parse(sessionStorage.getItem('movieList')) || [])
     useEffect(()=>{
         let promises = []
         
@@ -29,19 +29,36 @@ export default function Favorites(props){
     },[])
     
     useEffect(()=>{
-        if(favMovies.length > 0){
-            localStorage.setItem('movieList', JSON.stringify(favMovies))
-        }
+
+        sessionStorage.setItem('movieList', JSON.stringify(favMovies))
+        
  
     },[favMovies])
+    function handleRemoveFav(e){
+        let id = Number.parseInt(e.currentTarget.value)
+        let idString = e.currentTarget.value
+
+        let foundId = movieIds.find(id => id === idString)
+        let newIdList = movieIds.filter(id => id !== foundId)
+        setMovieIds(newIdList)
+
+        let foundMovie = favMovies.find(movie => movie.id === id)
+        let newList = favMovies.filter(movie => movie !== foundMovie)
+        setFavMovies(newList)   
+    }
 
     return(
         <>
-        <Typography component='h1' variant='h2'>{favMovies.length > 0 ? 'Your Favorites' : 'No favorites'}</Typography>
-        <Container sx={{ display:'flex', flexWrap:'wrap', gap:'30px', mt:5   }}>
-            
-            {favMovies && favMovies.map(movie => <MovieCardsHome key={movie.id} details={movie} />)}
-        </Container>
+
+            <Typography component='h1' variant='h3' sx={{ textAlign:'center',m:1,width:'100%'} }>{favMovies.length > 0 ? 'Your Favorites' : 'No favorites'}</Typography>
+            <Container sx={{ display:'flex', flexWrap:'wrap', gap:'30px', mt:1,justifyContent:'center'  }}>
+                {favMovies && favMovies.map(movie => <MovieCardsHome
+                handleRemoveFav={handleRemoveFav}
+                removeFav={true}
+                fav={<FavoriteIcon fontSize='small' sx={{ pointerEvents: 'none' }} />}
+                key={movie.id} details={movie} />)}
+            </Container>
+
         </>
     )
 
