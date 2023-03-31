@@ -16,7 +16,7 @@ import 'swiper/css/bundle';
 
 SwiperCore.use([Navigation,Autoplay, Pagination, Scrollbar, A11y,EffectCards]);
 
-export default function Movies(){
+export default function Movies({handleFavorite}){
     const { get,loading } = useFetch(`https://api.themoviedb.org/3/`)
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
@@ -38,7 +38,8 @@ export default function Movies(){
     const [popular, setPopular] = useState([])
     
   
-    const [movieId, setMovieId] = useState([])
+   
+
 
     useEffect(()=>{
         Promise.all([
@@ -60,25 +61,7 @@ export default function Movies(){
 
 
 
-    function handleFavorite(e){
-        if(!e.target.value){
-            return
-        }
-        setMovieId(prevState=> {
-     
-                if(prevState.includes(e.target.value)){
-                    return prevState
-                }else{
-                 
-                    return [...prevState, e.target.value]
     
-                }
-     
-
-        })
-     
-    }    
-
 
 
 
@@ -117,7 +100,7 @@ export default function Movies(){
                      marginLeft:{xs:0, md:1}, mb: {md:1, xs:1}, mt:{xs:5, md:0}}}>Upcoming movies</Typography>  
                     <Swiper  
                         effect={"cards"}
-                        grabCursor={true}
+                        grabCursor={false}
                         modules={[EffectCards]}
                         className="mySwiper"
                                                             >

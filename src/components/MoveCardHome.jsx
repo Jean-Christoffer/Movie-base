@@ -16,19 +16,24 @@ export default function MovieCardsHome(props){
                 <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='latest-img'  />
             </Box>
             <Typography  variant='subtitle2' component='p' sx={{color:'white', mb:0.5,height:'2.5rem',textAlign:'left', p:1 }}>{details.original_title ?? details.title}</Typography>
+            
             <Box sx={{ display:'flex',alignItems:'center',gap:'5px',justifyContent:'space-between' }}>
                 <Box sx={{ display:'flex',alignItems:'center',gap:'5px',ml:1}}>
                     <StarIcon sx={{ color:'#dba506' }}  />
                     <Typography sx={{ fontWeight:'bold',color:'white' }}>{details.vote_average === 0 ? 'No rating yet' :
                             details.vote_average % 1 === 0 ? details.vote_average : details.vote_average.toFixed(1)}
                     </Typography>
+                    
                 </Box>
-                <Button onClick={handleFavorite} value={details.id} sx={{ color:'#dba506' }}>
-                    <FavoriteIcon  fontSize='small' sx={{cursor:'pointer'}}/>
-                </Button>
+   
+                    <Button variant='outlined' onClick={handleFavorite} value={details.id} sx={{ color:'#dba506',zIndex:1000 }}>
+                        clickme
+                    </Button>
+
             </Box>
             <Box>
-                <Link className=' cta-up' to={`details/${details.id}`}>Details</Link>
+                <Link className=' cta-up' to={`/details/${details.id}`}>Details</Link>
+                
             </Box>
 
         </Paper>
