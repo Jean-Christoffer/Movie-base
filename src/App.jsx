@@ -1,5 +1,6 @@
 import {Container} from '@mui/material'
-import {Route, Routes,BrowserRouter} from 'react-router-dom'
+import {Route, Routes,BrowserRouter } from 'react-router-dom'
+
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Details from './components/Details.jsx'
@@ -42,14 +43,16 @@ return(
       <Navbar/>
 
       <Container sx={{ display:'flex', flexDirection:'column',minHeight:'100vh' }} >
-      <Routes>
-        <Route path='/' element={<Home handleFavorite={handleFavorite}  />}></Route>
-        <Route path='/details/:id' element={<Details handleFavorite={handleFavorite} />}></Route>
-        <Route path='/movies/' element={<TopratedPage />}></Route>
-        <Route path='/genre/' element={<MoviesByGenre />}></Route>
-        <Route path='/searchresults/' element={<SearchResults/>}></Route>
-        <Route path='/favorites/' element={<Favorites movieIds={movieIds} setMovieIds={setMovieIds}/>}></Route>
-      </Routes>
+
+        <Routes>
+          <Route exact  path='/' element={<Home handleFavorite={handleFavorite}  />}></Route>
+          <Route path='/details/:id' element={<Details handleFavorite={handleFavorite} />}></Route>
+          <Route path='/movies/' element={<TopratedPage />}></Route>
+          <Route path='/genre/' element={<MoviesByGenre />}></Route>
+          <Route path='/searchresults/' element={<SearchResults/>}></Route>
+          <Route path='/favorites/' element={<Favorites movieIds={movieIds} setMovieIds={setMovieIds}/>}></Route>
+        </Routes>
+
       </Container>
 
       <Footer/>
