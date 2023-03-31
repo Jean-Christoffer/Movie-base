@@ -12,7 +12,7 @@ export default function MovieCardsHome(props){
 
         <Paper id={details.id} sx={{display:'flex',flexDirection:'column', bgcolor:'#191919',width:'100%',textAlign:'center',maxWidth:'220px',position:'relative' }}>
             {removeFav === true &&  <Box sx={{ position:'absolute' ,right:0}}>
-                <Button variant='text' value={details.id} onClick={handleRemoveFav} sx={{ color:'white' }}><CloseIcon/></Button>
+                <Button variant='text' value={details.id} onClick={handleRemoveFav} sx={{ color:'#dba506' }}><CloseIcon/></Button>
             </Box>}
             <Box sx={{ height:'320px' }}> 
                 <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='latest-img'  />
