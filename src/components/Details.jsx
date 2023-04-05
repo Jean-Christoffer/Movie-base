@@ -9,15 +9,21 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Scrollbar, A11y } from "swiper";
-import StarIcon from "@mui/icons-material/Star";
+import StarIcon from "@mui/icons-material/Star"
+import {useRef } from 'react';
 import "swiper/css/bundle";
 
 SwiperCore.use([Navigation, Scrollbar, A11y]);
 
-export default function Details({handleFavorite}) {
+export default function Details(props) {
+  const {handleFavorite,movieList} = props
+
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const isTablet = useMediaQuery(theme.breakpoints.between("sm", "md"));
+
+
 
   let slidesPerView = 3;
 
@@ -42,6 +48,11 @@ export default function Details({handleFavorite}) {
 
   const [writers, setWrites] = useState([]);
   const [director, setDirector] = useState([]);
+
+  const [toggleColor, setToggleColor] = useState('white')
+
+  const ref = useRef(params.id)
+
 
   useEffect(() => {
     Promise.all([
@@ -111,6 +122,21 @@ export default function Details({handleFavorite}) {
     }
   }, [trailer]);
 
+  useEffect(()=>{
+    setToggleColor(prevState=> {
+    
+      if(movieList.includes(ref.current)){
+        prevState = '#dba506'
+          return prevState
+      }else{  
+        prevState = 'white'
+        return prevState
+            
+      }
+  
+})
+  },[movieList])
+console.log(ref.current)
   return (
     <>
       <Container sx={{ mt: 2 }}>
@@ -192,8 +218,8 @@ export default function Details({handleFavorite}) {
                   ? data.vote_average
                   : data.vote_average.toFixed(1)}
               </Typography>
-              <IconButton variant='text' onClick={handleFavorite} value={params.id} sx={{ml:'auto', color:'#dba506',zIndex: 11}}>
-                  <FavoriteIcon fontSize='medium' sx={{ pointerEvents: 'none' }} />
+              <IconButton  variant='text' onClick={handleFavorite} value={params.id} sx={{ml:'auto', color:`${toggleColor}`}}>
+                  <FavoriteIcon fontSize='medium' sx={{ pointerEvents: 'none',color:{toggleColor} }} />
                 </IconButton>
             </Box>
             

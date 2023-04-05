@@ -13,13 +13,17 @@ import {useState,useEffect} from 'react'
 function App() {
 
   const [movieIds, setMovieIds] = useState(JSON.parse(sessionStorage.getItem('moveId')) || [])
+
+
+
+
   useEffect(() => {
     sessionStorage.setItem('moveId', JSON.stringify(movieIds))
   }, [movieIds])
   function handleFavorite(e){
 
     if(!e.target.value){
-        return
+      return 
     }
     setMovieIds(prevState=> {
     
@@ -30,11 +34,11 @@ function App() {
          
                 return [...prevState, e.target.value]
             }
- 
         
     })
     
-}    
+} 
+
 
 return(
   <>
@@ -45,8 +49,8 @@ return(
       <Container sx={{ display:'flex', flexDirection:'column',minHeight:'100vh' }} >
 
         <Routes>
-          <Route exact  path='/' element={<Home handleFavorite={handleFavorite}  />}></Route>
-          <Route path='/details/:id' element={<Details handleFavorite={handleFavorite} />}></Route>
+          <Route exact  path='/' element={<Home   />}></Route>
+          <Route path='/details/:id' element={<Details handleFavorite={handleFavorite} movieList={movieIds}  />}></Route>
           <Route path='/movies/' element={<TopratedPage />}></Route>
           <Route path='/genre/' element={<MoviesByGenre />}></Route>
           <Route path='/searchresults/' element={<SearchResults/>}></Route>

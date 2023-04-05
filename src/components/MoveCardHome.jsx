@@ -5,7 +5,7 @@ import StarIcon from '@mui/icons-material/Star';
 import CloseIcon from '@mui/icons-material/Close';
 import IconButton from '@mui/material/IconButton';
 export default function MovieCardsHome(props){
-    const {details, handleFavorite,fav,removeFav,handleRemoveFav} = props
+    const {details,removeFav,handleRemoveFav} = props
     return(
         <>
 
@@ -28,10 +28,6 @@ export default function MovieCardsHome(props){
                     </Typography>
                     
                 </Box>
-   
-                <IconButton variant='text' onClick={handleFavorite} value={details.id} sx={{ color:'#dba506',zIndex: 11}}>
-                        {fav}
-                </IconButton>
 
                 </Box>
                 <Typography  variant='subtitle2' component='p' sx={{color:'white', mb:0.5,height:'2.5rem',textAlign:'left', p:1 }}>{details.original_title ?? details.title}</Typography>

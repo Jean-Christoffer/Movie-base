@@ -123,7 +123,7 @@ export default function Movies({handleFavorite}){
                     spaceBetween={space}
                     slidesPerView={slidesPerView}
                                            >
-                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome fav={<FavoriteIcon fontSize='small' sx={{ pointerEvents: 'none' }} />}  handleFavorite={handleFavorite} key={movie.id} details={movie} /></SwiperSlide>)}
+                      {popular.map((movie) => <SwiperSlide key={movie.id} ><MovieCardsHome key={movie.id} details={movie} /></SwiperSlide>)}
                    
                     </Swiper> 
             </Container>
