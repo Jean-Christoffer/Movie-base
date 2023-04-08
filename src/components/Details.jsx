@@ -192,7 +192,7 @@ console.log(ref.current)
         <Container
           sx={{ mt: 2, bgcolor: "#191919", p: 1, borderRadius: "5px" }}
         >
-          <Box sx={{ display: "flex", gap: "20px", mb: 1 }}>
+          <Box sx={{ display: "flex", gap: "20px", mb: 1, flexWrap:'wrap' }}>
             {genres.map((genre, index) => (
               <Typography key={index} sx={{ color: "#dba506" }}>
                 {genre.name}
@@ -224,35 +224,35 @@ console.log(ref.current)
             </Box>
             
           )}
-
-          <Typography sx={{ mb: 0.1, fontWeight: "bold" }}>
-            Overview:
-          </Typography>
-          <Typography>{data.overview}</Typography>
-
-          <Box sx={{ display: "flex", fontWeight: "bold", mt: 1 }}>
+          <Box sx={{ maxWidth:'750px' }}>
+            <Typography sx={{ mb: 0.1, fontWeight: "bold" }}>
+              Overview:
+            </Typography>
+            <Typography variant='body'>{data.overview}</Typography>
+          </Box>
+          <Box sx={{ display: "flex", fontWeight: "bold", mt: 1, flexWrap:'wrap' }}>
             Writers:{`\u00A0`}
             {writers.slice(0, -1).map((writer, index) => (
-              <Typography key={index}>
+              <Typography variant='body2' key={index}>
                 {writer.name}
                 {`\u00A0`} - {`\u00A0`}
               </Typography>
             ))}
             {writers.length > 0 && (
-              <Typography>{writers[writers.length - 1].name}</Typography>
+              <Typography variant='body2'>{writers[writers.length - 1].name}</Typography>
             )}
           </Box>
 
-          <Box sx={{ display: "flex", fontWeight: "bold", mt: 1 }}>
+          <Box sx={{ display: "flex", fontWeight: "bold", mt: 1, flexWrap:'wrap' }}>
             Directors:{`\u00A0`}
             {director.slice(0, -1).map((director, index) => (
-              <Typography key={index}>
+              <Typography variant='body2' key={index}>
                 {director.name}
                 {`\u00A0`} - {`\u00A0`}
               </Typography>
             ))}
             {director.length > 0 && (
-              <Typography>{director[director.length - 1].name}</Typography>
+              <Typography variant='body2'>{director[director.length - 1].name}</Typography>
             )}
           </Box>
         </Container>
