@@ -1,9 +1,9 @@
 ## Movie-base
 #### credit: API from themoviedb
 ### Built With
--React
--Material ui
-##### funtionalities 
+- React
+- Material ui
+##### Funtionalities 
 - Search movies
 - Add / remove favorites
 - Sort by genres
