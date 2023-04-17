@@ -3,7 +3,7 @@
 ### Built With
 - React
 - Material ui
-##### Funtionalities 
+##### Functionalities 
 - Search movies
 - Add / remove favorites
 - Sort by genres
