@@ -1,6 +1,6 @@
 import {Container} from '@mui/material'
 import {Route, Routes,BrowserRouter } from 'react-router-dom'
-
+import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/Navbar'
 import Home from './components/Home'
 import Details from './components/Details.jsx'
@@ -44,6 +44,7 @@ return(
   <>
   
     <BrowserRouter>
+    <ScrollToTop/>
       <Navbar/>
 
       <Container sx={{ display:'flex', flexDirection:'column',minHeight:'100vh' }} >
