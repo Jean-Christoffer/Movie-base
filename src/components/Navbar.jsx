@@ -141,7 +141,7 @@ useEffect(() => {
               }}
             >
               {pages.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu} aria-label="Navigation-link">
+                <MenuItem key={index} onClick={handleCloseNavMenu} aria-label="Navigation-link" role='navigation'>
                   <NavLink key={index}  to={`/${page.route}`} >{page.name}</NavLink>
                 </MenuItem>
               ))}
@@ -169,7 +169,7 @@ useEffect(() => {
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>
             {pages.map((page,index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu} aria-label="Navigation-link">
+                <MenuItem key={index} onClick={handleCloseNavMenu} aria-label="Navigation-link" role='navigation'>
                 <NavLink key={index}  to={`/${page.route}`} >{page.name}</NavLink>
               </MenuItem>
             ))}

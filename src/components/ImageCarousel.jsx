@@ -12,7 +12,7 @@ export default function ImageCarousel({details})
                 <img src={`http://image.tmdb.org/t/p/w500/${details.backdrop_path}`} className='caro-img' alt={details.title ?? details.name}/>
             </Box>
             <Box sx={{width:{xs:'60px', sm:'100px',md:'120px'}, position:'absolute', display:{xs:'none', md:'block'}, bottom:'40px',left:'10px' }}>
-                <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='absolute-img caro-img' alt={details.title ?? details.name}/>
+                <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} className='absolute-img caro-img' alt={details.title ?? details.name}/>
             </Box>
             <Typography  component='h2' sx={{color:'white'}} >{details.title ?? details.name}</Typography>
             <Box sx={{ m:3  }}>

@@ -160,7 +160,7 @@ console.log(ref.current)
             <img alt={data.name ?? data.original_title}
               src={
                 data.poster_path
-                  ? `http://image.tmdb.org/t/p/w500/${data.poster_path}`
+                  ? `https://image.tmdb.org/t/p/w500/${data.poster_path}`
                   : "/2922280_27002.jpg"
               }
               className="bear-img"
@@ -284,7 +284,7 @@ console.log(ref.current)
                 <SwiperSlide key={index}>
                   <img alt={data.name ?? data.original_title}
                     className="swiper-img"
-                    src={`http://image.tmdb.org/t/p/w500/${image.file_path}`}
+                    src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
                   />
                 </SwiperSlide>
               ))}

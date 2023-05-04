@@ -15,7 +15,7 @@ export default function MovieCardsHome(props){
                 <Button variant='text' value={details.id} onClick={handleRemoveFav} sx={{ color:'#dba506' }}><CloseIcon/></Button>
             </Box>}
             <Box sx={{ height:'320px' }}> 
-                <img src={`http://image.tmdb.org/t/p/w500/${details.poster_path}`} className='latest-img' alt={details.original_title ?? details.name}  />
+                <img src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`} className='latest-img' alt={details.original_title ?? details.name}  />
             </Box>
         
             
