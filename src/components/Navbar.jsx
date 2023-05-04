@@ -99,21 +99,21 @@ useEffect(() => {
 }, [query])
 
   return (
-    <AppBar position="sticky" sx={{ bgcolor:'#191919', display:'flex', justifyContent:'space-between' }}>
+    <AppBar position="sticky" sx={{ bgcolor:'#191919', display:'flex', justifyContent:'space-between' }} aria-label="Navigation">
       <Container maxWidth="xl">
  
         <Toolbar disableGutters> 
 
         <Box 
             sx={{mt:1, display: { xs: 'none', md: 'flex' }, mr: 1 }} >
-           <Link to='/'> <img src='/mdb.svg' width={'80px'} /></Link>
+           <Link to='/'> <img src='/mdb.svg' width={'80px'} aria-label="Logo" /></Link>
           </Box>
 
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
-              aria-label="account of current user"
+              aria-label="Hamburger button"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
@@ -124,6 +124,7 @@ useEffect(() => {
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
+              aria-label="Nav-menu"
               anchorOrigin={{
                 vertical: 'bottom',
                 horizontal: 'left',
@@ -140,14 +141,14 @@ useEffect(() => {
               }}
             >
               {pages.map((page, index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                <MenuItem key={index} onClick={handleCloseNavMenu} aria-label="Navigation-link">
                   <NavLink key={index}  to={`/${page.route}`} >{page.name}</NavLink>
                 </MenuItem>
               ))}
             </Menu>
           </Box>  
          
-          <form onSubmit={handleQuery}>
+          <form onSubmit={handleQuery} aria-label="Search-form">
             <Search sx={{ position:'relative' }} value={searchInput} onInput={(event) => setSearchInput(event.target.value)}>
             <StyledInputBase
                 placeholder="Search…"
@@ -163,12 +164,12 @@ useEffect(() => {
 
           <Box 
             sx={{mt:1, display: { xs: 'flex', md: 'none' }, ml: 1 }} >
-           <Link to='/'> <img src='/mdb.svg' width={'60px'} /></Link>
+           <Link to='/'> <img src='/mdb.svg' width={'60px'} aria-label="Logo" /></Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>
             {pages.map((page,index) => (
-                <MenuItem key={index} onClick={handleCloseNavMenu}>
+                <MenuItem key={index} onClick={handleCloseNavMenu} aria-label="Navigation-link">
                 <NavLink key={index}  to={`/${page.route}`} >{page.name}</NavLink>
               </MenuItem>
             ))}
