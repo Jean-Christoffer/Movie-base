@@ -106,7 +106,7 @@ useEffect(() => {
 
         <Box 
             sx={{mt:1, display: { xs: 'none', md: 'flex' }, mr: 1 }} >
-           <Link to='/'> <img src='/mdb.svg' width={'80px'} aria-label="Logo" /></Link>
+           <Link to='/'> <img src='/mdb.svg' width={'80px'} aria-label="Logo" alt='Logo' /></Link>
           </Box>
 
 
@@ -164,7 +164,7 @@ useEffect(() => {
 
           <Box 
             sx={{mt:1, display: { xs: 'flex', md: 'none' }, ml: 1 }} >
-           <Link to='/'> <img src='/mdb.svg' width={'60px'} aria-label="Logo" /></Link>
+           <Link to='/'> <img src='/mdb.svg' width={'60px'} aria-label="Logo" alt='Logo' /></Link>
           </Box>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex', justifyContent:'flex-end' } }}>

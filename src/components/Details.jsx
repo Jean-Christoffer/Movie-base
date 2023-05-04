@@ -157,7 +157,7 @@ console.log(ref.current)
             sx={{ width: { xs: "100%", md: "320px" }, position: "relative" }}
           >
             {loading && <Loader />}
-            <img
+            <img alt={data.name ?? data.original_title}
               src={
                 data.poster_path
                   ? `http://image.tmdb.org/t/p/w500/${data.poster_path}`
@@ -282,7 +282,7 @@ console.log(ref.current)
             >
               {images.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <img
+                  <img alt={data.name ?? data.original_title}
                     className="swiper-img"
                     src={`http://image.tmdb.org/t/p/w500/${image.file_path}`}
                   />
