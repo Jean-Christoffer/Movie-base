@@ -1,4 +1,4 @@
-# Mobiebase
+# Moviebase
 
 A site I made to mainly practice React and to work with API's.
 
