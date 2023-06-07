@@ -12,6 +12,7 @@ A site I made to mainly practice React and to work with API's.
 - React
 - Material UI
 - Vite
+
 ## Installation
 
 Get your API key from https://www.themoviedb.org/
