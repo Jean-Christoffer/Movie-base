@@ -19,17 +19,17 @@ Get your API key from https://www.themoviedb.org/
 
 create a .env in the root directory, VITE_API_KEY=*Your API-KEY*
 
-
-
+1. clone repo
 ```bash
 git clone https://movie-base-mauve.vercel.app/.git
 
 cd movie-base
 
+```
+2. install dependencies
+```bash
 npm install
 ```
-    
-
 
 ## Features
 - Wishlist
